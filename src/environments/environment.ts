@@ -1,9 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+const apiURL = 'https://dev-connect-rest-api.herokuapp.com';
 export const environment = {
-  production: false
+  production: false,
+  signup:`${apiURL}/user/register`,
+  login:`${apiURL}/auth/signIn`
 };
 
 /*
