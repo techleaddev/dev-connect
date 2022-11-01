@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HeaderComponent,
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
   },
   {
     path: 'auth',

@@ -3,8 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import 'antd/dist/antd.css';
-import { Spin } from 'antd';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,7 +11,11 @@ import { Spin } from 'antd';
 })
 export class SignupComponent implements OnInit {
   singupForm: FormGroup;
-  constructor(private authService: AuthService, private toastr: ToastrService,private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     this.singupForm = new FormGroup({
       first_name: new FormControl(''),
       last_name: new FormControl(''),

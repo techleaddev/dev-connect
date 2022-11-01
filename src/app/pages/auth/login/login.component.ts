@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
         console.log(data);
-        
-        // localStorage.setItem('token', JSON.stringify(data));
+        localStorage.setItem('token', JSON.stringify(data));
         this.toastr.success('Bạn đã đăng nhập thành công');
       },
       (e) => {
