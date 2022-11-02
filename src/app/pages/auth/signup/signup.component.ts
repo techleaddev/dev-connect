@@ -17,10 +17,10 @@ export class SignupComponent implements OnInit {
     private router: Router
   ) {
     this.singupForm = new FormGroup({
-      first_name: new FormControl(''),
-      last_name: new FormControl(''),
-      email: new FormControl('', Validators.email),
-      password: new FormControl(''),
+      first_name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', Validators.required),
     });
   }
 
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
       (data) => {
         console.log(data);
         this.toastr.success('Bạn đã đăng kí thành công!');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/auth/login');
       },
       (e) => {
         const message = e.error.message;

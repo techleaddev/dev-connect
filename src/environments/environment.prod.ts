@@ -5,6 +5,3 @@ export const environment = {
   login: `${apiURL}/auth/signIn`,
   project: `${apiURL}/project`,
 };
-export const environments = {
-  production: true
-};

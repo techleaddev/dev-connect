@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/app/services/project.service';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-modal-popup',
   templateUrl: './modal-popup.component.html',
@@ -11,7 +13,8 @@ export class ModalPopupComponent implements OnInit {
   projectForm: FormGroup;
   constructor(
     private toast: ToastrService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    public dialog: MatDialog
   ) {
     this.projectForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -26,6 +29,7 @@ export class ModalPopupComponent implements OnInit {
       (data) => {
         console.log(data);
         this.toast.success('thanh cong!');
+        this.dialog.closeAll();
       },
       (e) => {
         console.log(e);

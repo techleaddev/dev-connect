@@ -158,36 +158,20 @@
     tạo dự án
   </button>
 </div>
-
-<!-- <div class="flex flex-col md:flex md:flex-row gap-2">
-    <div class="flex flex-col md:flex md:flex-row gap-2">
-      <a
-        class="h-auto rounded bg-[#ffc107] lg:bg-[#3961fb] font-bold text-black lg:text-white px-[15px] py-[10px]"
-      >
-        Quản lý nhà trọ
-      </a>
-
-      <div class="dropdown1 inline-block relative">
-        <button
-          class="bg-[#ffc107] lg:bg-[#3961fb] font-bold text-black lg:text-white px-[15px] py-[10px]"
-        >
-          Xin chào:
-        </button>
-        <div
-          class="dropdown-menu1 absolute hidden text-gray-700 pt-2 rounded-md"
-        >
-          <a
-            class="rounded-md bg-slate-200 font-bold hover:text-gray-50 hover:bg-gray-400 py-2 px-4 block"
-          >
-            Thông tin tài khoản
-          </a>
-
-          <div
-            class="rounded-md bg-slate-200 font-bold hover:text-gray-50 hover:bg-gray-400 py-2 px-4 block cursor-pointer"
-          >
-            Đăng xuất
-          </div>
-        </div>
+<a routerLink="/">
+  <div class="grid grid-cols-4 gap-4 mx-auto container">
+    <div
+      *ngFor="let project of Project"
+      class="max-w-sm rounded overflow-hidden shadow-lg"
+    >
+    
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{{ project.name }}</div>
+        <p class="text-gray-700 text-base">
+          {{ project.description }}
+        </p>
+        <div class="font-bold text-xl mb-2">{{nameProject}}</div>
       </div>
     </div>
-  </div> -->
+  </div>
+</a>

@@ -24,8 +24,8 @@ export class ProjectService {
       headers: this.headers,
     });
   }
-  createProje(data: any): Observable<any> {
-    return this.http.post<any>(`${environment.project}`, data, {
+  getProject(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.project}`, {
       headers: this.headers,
     });
   }

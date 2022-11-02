@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { MateriaModule } from '../../materia-module';
 import { ModalPopupComponent } from './pages/modal-popup/modal-popup.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ShowvalidateComponent } from './components/showvalidate/showvalidate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,8 @@ import { ModalPopupComponent } from './pages/modal-popup/modal-popup.component';
     SignupComponent,
     WelcomeComponent,
     ModalPopupComponent,
+    HeaderComponent,
+    ShowvalidateComponent
   ],
   imports: [
     BrowserModule,
