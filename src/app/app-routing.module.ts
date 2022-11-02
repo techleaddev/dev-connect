@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path:"signin",
-    component: SigninComponent
+    component: SigninComponent,
   },
   {
     path:"",
-    component:HomepageComponent
+    component:HomepageComponent,
   }
 ];
 

@@ -33,10 +33,12 @@ export class SigninComponent implements OnInit {
 
   onSubmit(){
     this.authService.signIn(this.formSignin.value).subscribe(data=>{
+      localStorage.setItem('user', JSON.stringify(data))
+      data
       this.toast.success("Đăng nhập thành công")
       setTimeout(()=>{
         this.router.navigateByUrl('/')
-      })
+      },2000)
     }, (e)=>{
       this.toast.error( e.error.message)
     })

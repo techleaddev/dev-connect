@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ModalComponent } from './component/modal/modal.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { ProjectListComponent } from './pages/project/project-list/project-list.component';
+import { ShowValidateComponent } from './component/show-validate/show-validate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     SignupComponent,
     HomepageComponent,
     ModalComponent,
+    ProjectListComponent,
+    ShowValidateComponent,
   ],
   imports: [
     BrowserModule,
