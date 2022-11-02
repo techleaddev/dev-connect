@@ -13,6 +13,7 @@ import { MateriaModule } from '../../materia-module';
 import { ModalPopupComponent } from './pages/modal-popup/modal-popup.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShowvalidateComponent } from './components/showvalidate/showvalidate.component';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ShowvalidateComponent } from './components/showvalidate/showvalidate.co
     WelcomeComponent,
     ModalPopupComponent,
     HeaderComponent,
-    ShowvalidateComponent
+    ShowvalidateComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

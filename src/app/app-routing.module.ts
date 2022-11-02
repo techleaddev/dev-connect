@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { CanAcssessAdminGuard } from './guards/can-acssess-admin.guard';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
@@ -9,6 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: HeaderComponent,
+    canActivate: [CanAcssessAdminGuard],
   },
   {
     path: 'welcome',
@@ -27,10 +30,15 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [CanAcssessAdminGuard],
 })
 export class AppRoutingModule {}
