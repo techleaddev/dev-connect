@@ -35,6 +35,7 @@ export class ModalComponent implements OnInit {
   onSubmit(){
     this.projectService.createProject(this.formProject.value).subscribe(data=>{
       this.toast.success("Thêm thành công")
+      window.location.reload()
     }, (e)=>{
       this.toast.error(e.error.message)
     })
