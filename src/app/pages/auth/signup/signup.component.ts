@@ -28,7 +28,6 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.authService.signup(this.singupForm.value).subscribe(
       (data) => {
-        console.log(data);
         this.toastr.success('Bạn đã đăng kí thành công!');
         this.router.navigateByUrl('/auth/login');
       },

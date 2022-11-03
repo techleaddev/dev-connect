@@ -30,6 +30,7 @@ export class ModalPopupComponent implements OnInit {
         console.log(data);
         this.toast.success('thanh cong!');
         this.dialog.closeAll();
+        this.projectService.getProject();
       },
       (e) => {
         console.log(e);

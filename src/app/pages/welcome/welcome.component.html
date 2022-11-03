@@ -158,7 +158,7 @@
     tạo dự án
   </button>
 </div>
-<a routerLink="/">
+
   <div class="grid grid-cols-4 gap-4 mx-auto container">
     <div
       *ngFor="let project of Project"
@@ -171,7 +171,13 @@
           {{ project.description }}
         </p>
         <div class="font-bold text-xl mb-2">{{nameProject}}</div>
+        <div class="flex justify-between">
+          <button class="bg-red-500 text-white font-bold py-2 px-4 rounded"> Xóa</button>
+          <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><a routerLink="/dashboard/{{project._id}}">Chi tiết</a></button>
+        </div>
+         
       </div>
+     
     </div>
   </div>
-</a>
+

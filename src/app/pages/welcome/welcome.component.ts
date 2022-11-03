@@ -20,14 +20,12 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProjects.getProject().subscribe((data) => {
-      this.Project = data;
-      console.log(data);
-      const a = data.map((o) => o.originator.name);
-      
-      this.nameProject =a[0];
-      console.log();
-    });
+    this.getProjects.getProject();
+    this.getProjects.Project.subscribe((data) => {
+    this.Project = data;
+    const a = data.map((o:any) => o.originator.name);
+    this.nameProject =a[0];
+  });
   }
   OpenPopup() {
     this.dialog.open(ModalPopupComponent, {

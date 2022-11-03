@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http.service';
+import { ProjectType } from '../types/Project';
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
+Project= new ReplaySubject<any>(1);
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
     const token = JSON.parse(localStorage.getItem('token') as string);
-    console.log(token.token);
 
     const config = new HttpHeaders({
       Accept: 'application/json ',
@@ -24,9 +25,21 @@ export class ProjectService {
       headers: this.headers,
     });
   }
-  getProject(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.project}`, {
+  getProjectById(id: string): Observable<any> {
+    return this.http.get<any>(`${environment.project}/${id}`, {
       headers: this.headers,
     });
+  }
+  updateProjectById(id: string,data:any): Observable<any> {
+    return this.http.put<any>(`${environment.project}/${id}`,data, {
+      headers: this.headers,
+    });
+  }
+  getProject():void {
+    this.http.get<any[]>(`${environment.project}`, {
+      headers: this.headers,
+    }).subscribe((data)=>
+    this.Project.next(data)
+    );
   }
 }

@@ -14,6 +14,7 @@ import { ModalPopupComponent } from './pages/modal-popup/modal-popup.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShowvalidateComponent } from './components/showvalidate/showvalidate.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
+import { HomeComponent } from './pages/dashboard/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { DashboardComponent } from './layouts/dashboard/dashboard.component';
     ModalPopupComponent,
     HeaderComponent,
     ShowvalidateComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
