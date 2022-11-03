@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalPopupComponent } from '../modal-popup/modal-popup.component';
 import { ProjectService } from 'src/app/services/project.service';
 import { ProjectType } from 'src/app/types/Project';
+import { ToastrService } from 'ngx-toastr';
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
 }
@@ -14,7 +15,7 @@ export interface DialogData {
 export class WelcomeComponent implements OnInit {
   Project: ProjectType[];
   nameProject: string[];
-  constructor(public dialog: MatDialog, private getProjects: ProjectService) {
+  constructor(public dialog: MatDialog, private getProjects: ProjectService,private toast:ToastrService) {
     this.Project = [];
     this.nameProject = [];
   }
@@ -33,5 +34,15 @@ export class WelcomeComponent implements OnInit {
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
     });
+  }
+  onRemove(id:string){
+    const confim = confirm('Bạn có chắc muốn xóa không?');
+    if(confim&&id){
+      this.getProjects.deleteProjectById(id).subscribe(()=>{
+          this.toast.success('Bạn đã xóa thành công!');
+        this.getProjects.getProject();
+      })
+    }
+    
   }
 }

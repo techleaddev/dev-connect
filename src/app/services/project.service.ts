@@ -30,6 +30,11 @@ Project= new ReplaySubject<any>(1);
       headers: this.headers,
     });
   }
+  deleteProjectById(id: string): Observable<any> {
+    return this.http.delete<any>(`${environment.project}/${id}`, {
+      headers: this.headers,
+    });
+  }
   updateProjectById(id: string,data:any): Observable<any> {
     return this.http.put<any>(`${environment.project}/${id}`,data, {
       headers: this.headers,

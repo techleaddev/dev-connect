@@ -172,7 +172,7 @@
         </p>
         <div class="font-bold text-xl mb-2">{{nameProject}}</div>
         <div class="flex justify-between">
-          <button class="bg-red-500 text-white font-bold py-2 px-4 rounded"> Xóa</button>
+          <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" (click)="onRemove(project._id)"> Xóa</button>
           <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><a routerLink="/dashboard/{{project._id}}">Chi tiết</a></button>
         </div>
          
