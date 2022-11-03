@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
   id: string;
   formProjectDashboard: FormGroup;
+  isDisableForm = true;
 
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -37,17 +38,30 @@ export class HomeComponent implements OnInit {
         });
       });
     }
+    this.formProjectDashboard.disable();
   }
   onSubmit() {
+    if(this.isDisableForm){
+      return;
+    }
     const submitData = this.formProjectDashboard.value;
     return this.ProjectService.updateProjectById(this.id, submitData).subscribe(
       (data) => {
         this.toast.success('Edit thành công!');
+        this.onClick()
       },
       (e) => {
-
         console.log(e.error.message);
       }
     );
+  }
+  onClick(){
+    if(this.isDisableForm){
+      this.formProjectDashboard.enable()
+    }else{
+      this.formProjectDashboard.disable();
+
+    }
+    this.isDisableForm = !this.isDisableForm
   }
 }
