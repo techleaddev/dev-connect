@@ -17,6 +17,8 @@ import { ProjectListComponent } from './pages/project/project-list/project-list.
 import { ShowValidateComponent } from './component/show-validate/show-validate.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { DashboardProjectComponent } from './pages/dashboard/dashboard-project/dashboard-project.component';
+import { DbListMemberComponent } from './pages/dashboard/db-list-member/db-list-member.component';
+import { ModalAddMemberComponent } from './component/modal-add-member/modal-add-member.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,8 @@ import { DashboardProjectComponent } from './pages/dashboard/dashboard-project/d
     ShowValidateComponent,
     DashboardComponent,
     DashboardProjectComponent,
+    DbListMemberComponent,
+    ModalAddMemberComponent,
   ],
   imports: [
     BrowserModule,
