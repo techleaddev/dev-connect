@@ -15,6 +15,8 @@ import { ModalComponent } from './component/modal/modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ProjectListComponent } from './pages/project/project-list/project-list.component';
 import { ShowValidateComponent } from './component/show-validate/show-validate.component';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
+import { DashboardProjectComponent } from './pages/dashboard/dashboard-project/dashboard-project.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,8 @@ import { ShowValidateComponent } from './component/show-validate/show-validate.c
     ModalComponent,
     ProjectListComponent,
     ShowValidateComponent,
+    DashboardComponent,
+    DashboardProjectComponent,
   ],
   imports: [
     BrowserModule,

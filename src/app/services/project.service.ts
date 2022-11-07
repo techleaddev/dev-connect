@@ -30,4 +30,16 @@ export class ProjectService {
   createProject(data:Project):Observable<Project>{
     return this.http.post<Project>(`${environment.project}`, data, {headers:this.headers})
   }
+
+  getProject(id: string): Observable<Project>{
+    return this.http.get<Project>(`${environment.project}/${id}`, {headers:this.headers})
+  }
+
+  updateProject(id: string, data:Project): Observable<Project>{
+    return this.http.put<Project>(`${environment.project}/${id}`, data, {headers:this.headers})
+  }
+
+  removeProject(id:string): Observable<Project>{
+    return this.http.delete<Project>(`${environment.project}/${id}`, {headers:this.headers})
+  }
 }
