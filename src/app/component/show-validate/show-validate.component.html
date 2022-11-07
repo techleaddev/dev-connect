@@ -1,0 +1,7 @@
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['required']" class="text-red-700 ml-1 ">
+    {{key}} không được để trống.
+</span>
+
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['email']" class="text-red-700 ">
+    {{key}} phải đúng định dạng email.
+</span>
