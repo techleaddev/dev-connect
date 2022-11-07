@@ -8,7 +8,7 @@ import { ProjectType } from '../types/Project';
   providedIn: 'root',
 })
 export class ProjectService {
-Project= new ReplaySubject<any>(1);
+  Project = new ReplaySubject<any>(1);
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
     const token = JSON.parse(localStorage.getItem('token') as string);
@@ -35,16 +35,21 @@ Project= new ReplaySubject<any>(1);
       headers: this.headers,
     });
   }
-  updateProjectById(id: string,data:any): Observable<any> {
-    return this.http.put<any>(`${environment.project}/${id}`,data, {
+  updateProjectById(id: string, data: any): Observable<any> {
+    return this.http.put<any>(`${environment.project}/${id}`, data, {
       headers: this.headers,
     });
   }
-  getProject():void {
-    this.http.get<any[]>(`${environment.project}`, {
+  AddMember(data: any): Observable<any> {
+    return this.http.put<any>(`${environment.member}`, data, {
       headers: this.headers,
-    }).subscribe((data)=>
-    this.Project.next(data)
-    );
+    });
+  }
+  getProject(): void {
+    this.http
+      .get<any[]>(`${environment.project}`, {
+        headers: this.headers,
+      })
+      .subscribe((data) => this.Project.next(data));
   }
 }
