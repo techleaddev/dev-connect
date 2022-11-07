@@ -1,0 +1,12 @@
+
+<span *ngIf="(field.dirty||field.touched)&& field.errors?.['required']" class="text-red-500">Không được bỏ trống!</span>
+<span *ngIf="(field.dirty||field.touched)&& field.errors?.['email']" class="text-red-500">Không đúng định dạng!</span>
+<span *ngIf="(field.dirty||field.touched)&& field.errors?.['minlength']" class="text-red-500">{{field.errors?.['minlength'].requiredLength}} Kí tự.</span>
+
+<span *ngIf="(field.dirty||field.touched)&& field.errors?.['min']" class="text-red-500">Tối thiểu là {{field.errors?.['min'].min}} tuổi!.</span>
+<span *ngIf="(field.dirty||field.touched)&& field.errors?.['max']" class="text-red-500">Tối đa là {{field.errors?.['max'].max}} tuổi!.</span>
+
+<span *ngIf="(field.dirty||field.touched)&& field.errors?.['hasProductError']" class="text-red-500">{{key}} phải chứa 'product'!.</span>
+
+
+<!-- custom -->
