@@ -10,12 +10,11 @@ import { ModalComponent } from 'src/app/component/modal/modal.component';
 export class HomepageComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
-    private router:Router
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
     const isToken= JSON.parse(localStorage.getItem("user") as string)
-    console.log(isToken)
     if(isToken){
       this.router.navigateByUrl('/')
     }else{
@@ -23,12 +22,8 @@ export class HomepageComponent implements OnInit {
     }
   }
   toggleModal(){
-    const dialogRef = this.dialog.open(ModalComponent, {
+    this.dialog.open(ModalComponent, {
       width:"50%"
     })
-    dialogRef.afterClosed().subscribe(result=>{
-    })
   }
-
-  
 }

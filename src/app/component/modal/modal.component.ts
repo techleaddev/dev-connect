@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from './../../services/project.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal',
@@ -11,10 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
   formProject: FormGroup
+
   constructor(
     private projectService: ProjectService,
     private toast : ToastrService,
-    private router: Router,
+    public dialogRef: MatDialogRef<ModalComponent>,
   ) {
     this.formProject = new FormGroup({
       name: new FormControl('', [
@@ -35,7 +37,8 @@ export class ModalComponent implements OnInit {
   onSubmit(){
     this.projectService.createProject(this.formProject.value).subscribe(data=>{
       this.toast.success("Thêm thành công")
-      window.location.reload()
+      this.projectService.getAllProject()
+      this.dialogRef.close()
     }, (e)=>{
       this.toast.error(e.error.message)
     })

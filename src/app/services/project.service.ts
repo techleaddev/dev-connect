@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Project } from './../types/project';
@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProjectService {
+  projectOb = new ReplaySubject<Project[]>(1);
 
   get headers(): HttpHeaders {
     const { token } = JSON.parse(localStorage.getItem('user') as string) 
@@ -20,9 +21,10 @@ export class ProjectService {
   }
 
   constructor(private http: HttpClient) { }
-
-  getAllProject(): Observable<Project[]>{
-    return this.http.get<Project[]>(environment.project, {headers:this.headers})
+   getAllProject(): void {
+      this.http.get<Project[]>(environment.project, {headers:this.headers}).subscribe(data => {
+      this.projectOb.next(data);
+    })
   }
 
   createProject(data:Project):Observable<Project>{

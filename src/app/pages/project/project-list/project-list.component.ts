@@ -15,7 +15,8 @@ export class ProjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.projectService.getAllProject().subscribe(data=>{
+    this.projectService.getAllProject();
+    this.projectService.projectOb.subscribe(data=>{
       data.map(item=> item.originator.name)
       this.projects = data
     })
