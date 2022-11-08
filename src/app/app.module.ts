@@ -12,13 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalComponent } from './component/modal/modal.component';
 
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ProjectListComponent } from './pages/project/project-list/project-list.component';
 import { ShowValidateComponent } from './component/show-validate/show-validate.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { DashboardProjectComponent } from './pages/dashboard/dashboard-project/dashboard-project.component';
 import { DbListMemberComponent } from './pages/dashboard/db-list-member/db-list-member.component';
 import { ModalAddMemberComponent } from './component/modal-add-member/modal-add-member.component';
+import { DbListStatusComponent } from './pages/dashboard/db-list-status/db-list-status.component';
+import { ModalAddStatusComponent } from './component/modal-add-status/modal-add-status.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,8 @@ import { ModalAddMemberComponent } from './component/modal-add-member/modal-add-
     DashboardProjectComponent,
     DbListMemberComponent,
     ModalAddMemberComponent,
+    DbListStatusComponent,
+    ModalAddStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +44,9 @@ import { ModalAddMemberComponent } from './component/modal-add-member/modal-add-
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

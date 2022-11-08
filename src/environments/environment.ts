@@ -12,6 +12,7 @@ export const environment = {
   project: `${apiUrl}/project`,
   member: `${apiUrl}/project`,
   deleteMember: `${apiUrl}/project-detail/member`,
+  status: `${apiUrl}/project`,
 };
 
 /*
