@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>ADD Member</h1>
+<div mat-dialog-content class="h-[310px]">
+  <form [formGroup]="AddmemberForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-6">
+      <input
+        type="email"
+        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="exampleInput7"
+        placeholder="Email..."
+        formControlName="email"
+      />
+      <input
+        type="hidden"
+        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="exampleInput7"
+        formControlName="projectId"
+      />
+    </div>
+
+    <div mat-dialog-actions>
+      <button type="submit" mat-raised-button color="primary">ADD</button>
+      <button mat-raised-button color="warn" mat-dialog-close>Đóng</button>
+    </div>
+  </form>
+</div>

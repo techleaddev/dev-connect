@@ -6,7 +6,10 @@ export const environment = {
   production: false,
   signup:`${apiURL}/user/register`,
   login:`${apiURL}/auth/signIn`,
-  project:`${apiURL}/project`
+  project:`${apiURL}/project`,
+  projectMember:`${apiURL}/project-detail`,
+  member:`${apiURL}/project/addMember`,
+  getmember:`${apiURL}/project/members`
 };
 
 /*

@@ -15,6 +15,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { ShowvalidateComponent } from './components/showvalidate/showvalidate.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
+import { StatusComponent } from './pages/dashboard/status/status.component';
+import { MemberComponent } from './pages/dashboard/member/member.component';
+import { ModalMemberComponent } from './pages/dashboard/modal-member/modal-member.component';
+import { ModalStatusComponent } from './pages/dashboard/modal-status/modal-status.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,11 @@ import { HomeComponent } from './pages/dashboard/home/home.component';
     HeaderComponent,
     ShowvalidateComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    StatusComponent,
+    MemberComponent,
+    ModalMemberComponent,
+    ModalStatusComponent
   ],
   imports: [
     BrowserModule,
