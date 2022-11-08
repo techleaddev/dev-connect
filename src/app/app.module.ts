@@ -18,6 +18,7 @@ import { HomeComponent } from './pages/dashboard/home/home.component';
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { MemberComponent } from './pages/dashboard/member/member.component';
 import { ModalMemberComponent } from './pages/dashboard/modal-member/modal-member.component';
+import { ModalStatusComponent } from './pages/dashboard/modal-status/modal-status.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { ModalMemberComponent } from './pages/dashboard/modal-member/modal-membe
     HomeComponent,
     StatusComponent,
     MemberComponent,
-    ModalMemberComponent
+    ModalMemberComponent,
+    ModalStatusComponent
   ],
   imports: [
     BrowserModule,

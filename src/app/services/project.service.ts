@@ -41,6 +41,15 @@ export class ProjectService {
       headers: this.headers,
     });
   }
+  getProject(): void {
+    this.http
+      .get<any[]>(`${environment.project}`, {
+        headers: this.headers,
+      })
+      .subscribe((data) => this.Project.next(data));
+  }
+
+  // Member
   AddMember(data: any): Observable<any> {
     return this.http.put<any>(`${environment.member}`, data, {
       headers: this.headers,
@@ -53,11 +62,9 @@ export class ProjectService {
       })
       .subscribe((data) => this.member.next(data));
   }
-  getProject(): void {
-    this.http
-      .get<any[]>(`${environment.project}`, {
-        headers: this.headers,
-      })
-      .subscribe((data) => this.Project.next(data));
+  deleteMemberById(projectId: string ,memberId:string): Observable<any> {
+    return this.http.delete<any>(`${environment.projectMember}/member?projectId=${projectId}&memberId=${memberId}`, {
+      headers: this.headers,
+    });
   }
 }
