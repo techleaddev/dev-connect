@@ -32,7 +32,14 @@ export class MemberService {
         headers: this.headers,
       })
       .subscribe((data) => {
-        this.memberOb.next(data)
+        this.memberOb.next(data);
       });
+  }
+
+  removeMember(idpj: any, idmember: any): Observable<any> {
+    return this.http.delete<any>(
+      `${environment.deleteMember}?projectId=${idpj}&memberId=${idmember}`,
+      { headers: this.headers }
+    );
   }
 }

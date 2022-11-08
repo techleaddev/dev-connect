@@ -11,6 +11,7 @@ export const environment = {
   signup: `${apiUrl}/user/register`,
   project: `${apiUrl}/project`,
   member: `${apiUrl}/project`,
+  deleteMember: `${apiUrl}/project-detail/member`,
 };
 
 /*

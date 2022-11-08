@@ -46,7 +46,7 @@ export class ModalAddMemberComponent implements OnInit {
     this.memberService.addMember(this.formAddMember.value).subscribe(
       (data) => {
         this.toast.success('Thêm thành công');
-        this.memberService.getAllMember(this.activatedRoute.snapshot.params['id']);
+        this.memberService.getAllMember(this.data.pjId);
         this.dialogRef.close();
       },
       (e) => {
