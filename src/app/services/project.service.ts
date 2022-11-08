@@ -10,6 +10,7 @@ import { ProjectType } from '../types/Project';
 export class ProjectService {
   Project = new ReplaySubject<any>(1);
   member = new ReplaySubject<any>(1);
+  status = new ReplaySubject<any>(1);
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
     const token = JSON.parse(localStorage.getItem('token') as string);
@@ -62,15 +63,25 @@ export class ProjectService {
       })
       .subscribe((data) => this.member.next(data));
   }
-  deleteMemberById(projectId: string ,memberId:string): Observable<any> {
-    return this.http.delete<any>(`${environment.projectMember}/member?projectId=${projectId}&memberId=${memberId}`, {
-      headers: this.headers,
-    });
+  deleteMemberById(projectId: string, memberId: string): Observable<any> {
+    return this.http.delete<any>(
+      `${environment.projectMember}/member?projectId=${projectId}&memberId=${memberId}`,
+      {
+        headers: this.headers,
+      }
+    );
   }
   // Status
   AddStatus(data: any): Observable<any> {
     return this.http.post<any>(`${environment.project}/status`, data, {
       headers: this.headers,
     });
+  }
+  getStatus(id: string): void {
+    this.http
+      .get<any[]>(`${environment.project}/status/${id}`, {
+        headers: this.headers,
+      })
+      .subscribe((data) => this.status.next(data));
   }
 }

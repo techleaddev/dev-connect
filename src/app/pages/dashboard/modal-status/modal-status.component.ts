@@ -19,7 +19,7 @@ export class ModalStatusComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private toast: ToastrService,
-    private dialog : MatDialog,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { id: string }
   ) {}
 
@@ -29,6 +29,7 @@ export class ModalStatusComponent implements OnInit {
         this.id = data._id;
       });
     }
+    this.projectService.getStatus(this.data.id);
   }
   onSubmit() {
     const newObj = { statusData: this.addStatusForm.value, projectId: this.id };
@@ -37,6 +38,7 @@ export class ModalStatusComponent implements OnInit {
       (data) => {
         this.toast.success('Bạn đã thêm thành công');
         this.dialog.closeAll();
+        this.projectService.getStatus(this.data.id);
       },
       (e) => {
         this.toast.error(e.error.message);

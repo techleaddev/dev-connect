@@ -8,20 +8,25 @@ import { ModalStatusComponent } from '../modal-status/modal-status.component';
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
-  styleUrls: ['./status.component.scss']
+  styleUrls: ['./status.component.scss'],
 })
 export class StatusComponent implements OnInit {
   id: string = '';
+  status: any = [];
   constructor(
     public dialog: MatDialog,
     private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
     private toast: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.id = this.activatedRouter.snapshot.params['id'];
-    
+    this.projectService.getStatus(this.id);
+    this.projectService.status.subscribe((data) => {
+      console.log(data);
+      this.status = data;
+    });
   }
   OpenPopup() {
     // this.id = this.activatedRouter.snapshot.params['id'];
@@ -31,5 +36,8 @@ export class StatusComponent implements OnInit {
       exitAnimationDuration: '1000ms',
       data: { id: this.id },
     });
+  }
+  onRemove(id:string){
+
   }
 }
