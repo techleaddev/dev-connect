@@ -67,4 +67,10 @@ export class ProjectService {
       headers: this.headers,
     });
   }
+  // Status
+  AddStatus(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.project}/status`, data, {
+      headers: this.headers,
+    });
+  }
 }
