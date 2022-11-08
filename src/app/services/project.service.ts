@@ -9,6 +9,7 @@ import { ProjectType } from '../types/Project';
 })
 export class ProjectService {
   Project = new ReplaySubject<any>(1);
+  member = new ReplaySubject<any>(1);
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
     const token = JSON.parse(localStorage.getItem('token') as string);
@@ -44,6 +45,13 @@ export class ProjectService {
     return this.http.put<any>(`${environment.member}`, data, {
       headers: this.headers,
     });
+  }
+  GetMember(id: string): void {
+    this.http
+      .get<any[]>(`${environment.getmember}/${id}`, {
+        headers: this.headers,
+      })
+      .subscribe((data) => this.member.next(data));
   }
   getProject(): void {
     this.http

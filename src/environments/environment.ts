@@ -7,7 +7,8 @@ export const environment = {
   signup:`${apiURL}/user/register`,
   login:`${apiURL}/auth/signIn`,
   project:`${apiURL}/project`,
-  member:`${apiURL}/project/addMember`
+  member:`${apiURL}/project/addMember`,
+  getmember:`${apiURL}/project/members`
 };
 
 /*

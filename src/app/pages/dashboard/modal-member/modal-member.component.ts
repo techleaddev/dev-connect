@@ -12,6 +12,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ModalMemberComponent implements OnInit {
   AddmemberForm: FormGroup;
+  member: any = [];
   id: string;
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -28,9 +29,6 @@ export class ModalMemberComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.activatedRouter.params.subscribe(data=>{console.log(data)})
-    // this.id = this.activatedRouter.snapshot.params['id'];
-    console.log(this.id, this.data.id);
     if (this.data.id) {
       this.ProjectService.getProjectById(this.data.id).subscribe((data) => {
         this.AddmemberForm.patchValue({
@@ -38,13 +36,16 @@ export class ModalMemberComponent implements OnInit {
         });
       });
     }
+    this.ProjectService.GetMember(this.data.id);
   }
+
   onSubmit() {
     this.ProjectService.AddMember(this.AddmemberForm.value).subscribe(
       (data) => {
         this.toast.success('thanh cong!');
         this.dialog.closeAll();
         this.ProjectService.getProject();
+        this.ProjectService.GetMember(this.data.id);
       },
       (e) => {
         const err = e.error.message;
