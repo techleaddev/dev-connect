@@ -1,5 +1,5 @@
 import { Observable, ReplaySubject } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -9,28 +9,15 @@ import { environment } from 'src/environments/environment';
 export class MemberService {
   memberOb = new ReplaySubject<any[]>(1);
 
-  get headers(): HttpHeaders {
-    const { token } = JSON.parse(localStorage.getItem('user') as string);
-    const config = new HttpHeaders({
-      Accept: 'application/json ',
-      'Content-Type': 'application/json',
-      'x-auth-token': token,
-    });
-    return config;
-  }
   constructor(private http: HttpClient) {}
 
   addMember(data: any): Observable<any> {
-    return this.http.put<any>(`${environment.member}/addMember`, data, {
-      headers: this.headers,
-    });
+    return this.http.put<any>(`${environment.member}/addMember`, data);
   }
 
   getAllMember(id: string): void {
     this.http
-      .get<any>(`${environment.member}/members/${id}`, {
-        headers: this.headers,
-      })
+      .get<any>(`${environment.member}/members/${id}`)
       .subscribe((data) => {
         this.memberOb.next(data);
       });
@@ -38,8 +25,7 @@ export class MemberService {
 
   removeMember(idpj: any, idmember: any): Observable<any> {
     return this.http.delete<any>(
-      `${environment.deleteMember}?projectId=${idpj}&memberId=${idmember}`,
-      { headers: this.headers }
+      `${environment.deleteMember}?projectId=${idpj}&memberId=${idmember}`
     );
   }
 }

@@ -7,7 +7,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalComponent } from './component/modal/modal.component';
@@ -21,6 +21,7 @@ import { DbListMemberComponent } from './pages/dashboard/db-list-member/db-list-
 import { ModalAddMemberComponent } from './component/modal-add-member/modal-add-member.component';
 import { DbListStatusComponent } from './pages/dashboard/db-list-status/db-list-status.component';
 import { ModalAddStatusComponent } from './component/modal-add-status/modal-add-status.component';
+import { AuthInterceptor } from './services/auth.intercepter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,13 @@ import { ModalAddStatusComponent } from './component/modal-add-status/modal-add-
     BrowserAnimationsModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

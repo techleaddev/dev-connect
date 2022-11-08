@@ -9,34 +9,21 @@ import { Injectable } from '@angular/core';
 export class StatusService {
   statusOb = new ReplaySubject<any[]>(1);
 
-  get headers(): HttpHeaders {
-    const { token } = JSON.parse(localStorage.getItem('user') as string);
-    const config = new HttpHeaders({
-      Accept: 'application/json ',
-      'Content-Type': 'application/json',
-      'x-auth-token': token,
-    });
-    return config;
-  }
   constructor(private http: HttpClient) {}
 
   createStatus(data: any): Observable<any> {
-    return this.http.post<any>(`${environment.project}/status`, data, {
-      headers: this.headers,
-    });
+    return this.http.post<any>(`${environment.project}/status`, data);
   }
 
   getAllStatus(id: string): void {
     this.http
-      .get<any[]>(`${environment.project}/status/${id}`, {
-        headers: this.headers,
-      })
+      .get<any[]>(`${environment.project}/status/${id}`)
       .subscribe((data) => {
         this.statusOb.next(data);
       });
   }
 
   removeStatus(id: string): Observable<any> {
-    return this.http.delete<any>(`${environment.project}`)
+    return this.http.delete<any>(`${environment.project}`);
   }
 }
