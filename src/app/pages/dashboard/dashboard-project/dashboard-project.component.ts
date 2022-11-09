@@ -42,7 +42,7 @@ export class DashboardProjectComponent implements OnInit {
         this.dbFormProject.patchValue({
           name:data.name,
           description:data.description,
-          readme:data.readme
+          readme:data.readme,
         })
       })
     }

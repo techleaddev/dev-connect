@@ -22,7 +22,7 @@
 
 <body
     class="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
-    <div class="absolute w-full bg-[#848e93] dark:hidden min-h-75"></div>
+    <div class="absolute w-full dark:hidden min-h-75 text-black"></div>
     <!-- sidenav  -->
     <aside
         class="fixed inset-y-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto antialiased transition-transform duration-200 -translate-x-full bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0"
@@ -41,15 +41,14 @@
                 <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Argon Dashboard 2</span>
             </a>
         </div>
-
         <hr
             class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
 
-        <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
+        <div class="items-center block w-auto max-h-screen h-sidenav grow basis-full">
             <ul class="flex flex-col pl-0 mb-0">
                 <li class="mt-0.5 w-full">
                     <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
-                        href="./pages/dashboard.html">
+                        routerLink="#">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
@@ -60,12 +59,12 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="./pages/tables.html">
+                        routerLink="/dashboard/todo">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                            <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
+                            <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-bullet-list-67"></i>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Tables</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Todo</span>
                     </a>
                 </li>
 
@@ -74,7 +73,7 @@
                         href="./pages/billing.html">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
-                            <i class="relative top-0 text-sm leading-normal text-emerald-500 ni ni-credit-card"></i>
+                            <i class="relative top-0 text-sm leading-normal text-emerald-500 ni ni-chat-round"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Billing</span>
                     </a>
@@ -156,12 +155,12 @@
                     <!-- breadcrumb -->
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                         <li class="text-sm leading-normal">
-                            <a class="text-white opacity-50" href="javascript:;">Pages</a>
+                            <a class="text-black opacity-50" href="javascript:;">Pages</a>
                         </li>
-                        <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                        <li class="text-sm pl-2 capitalize leading-normal text-black before:float-left before:pr-2 before:text-black before:content-['/']"
                             aria-current="page">Dashboard</li>
                     </ol>
-                    <h6 class="mb-0 font-bold text-white capitalize">Dashboard</h6>
+                    <h6 class="mb-0 font-bold text-black capitalize">Dashboard</h6>
                 </nav>
 
                 <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -179,7 +178,7 @@
                     <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
                         <li class="flex items-center">
                             <a href="./pages/sign-in.html"
-                                class="block px-0 py-2 text-sm font-semibold text-white transition-all ease-nav-brand">
+                                class="block px-0 py-2 text-sm font-semibold text-black transition-all ease-nav-brand">
                                 <i class="fa fa-user sm:mr-1"></i>
                                 <span class="hidden sm:inline">Sign In</span>
                             </a>
@@ -195,7 +194,7 @@
                             </a>
                         </li>
                         <li class="flex items-center px-4">
-                            <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                            <a href="javascript:;" class="p-0 text-sm text-black transition-all ease-nav-brand">
                                 <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog"></i>
                                 <!-- fixed-plugin-button-nav  -->
                             </a>
@@ -205,7 +204,7 @@
 
                         <li class="relative flex items-center pr-2">
                             <p class="hidden transform-dropdown-show"></p>
-                            <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand"
+                            <a href="javascript:;" class="block p-0 text-sm text-black transition-all ease-nav-brand"
                                 dropdown-trigger aria-expanded="false">
                                 <i class="cursor-pointer fa fa-bell"></i>
                             </a>

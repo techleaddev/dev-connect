@@ -26,6 +26,8 @@ import { ModalAddTagComponent } from './component/modal-add-tag/modal-add-tag.co
 import { DbListTagComponent } from './pages/dashboard/db-list-tag/db-list-tag.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartPieComponent } from './pages/dashboard/chart-pie/chart-pie.component';
+import { TodoComponent } from './pages/dashboard/todo/todo.component';
+import { ModalTodoComponent } from './component/modal-todo/modal-todo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { ChartPieComponent } from './pages/dashboard/chart-pie/chart-pie.compone
     ModalAddTagComponent,
     DbListTagComponent,
     ChartPieComponent,
+    TodoComponent,
+    ModalTodoComponent,
   ],
   imports: [
     BrowserModule,
