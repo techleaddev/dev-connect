@@ -22,6 +22,10 @@ import { ModalAddMemberComponent } from './component/modal-add-member/modal-add-
 import { DbListStatusComponent } from './pages/dashboard/db-list-status/db-list-status.component';
 import { ModalAddStatusComponent } from './component/modal-add-status/modal-add-status.component';
 import { AuthInterceptor } from './services/auth.intercepter';
+import { ModalAddTagComponent } from './component/modal-add-tag/modal-add-tag.component';
+import { DbListTagComponent } from './pages/dashboard/db-list-tag/db-list-tag.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartPieComponent } from './pages/dashboard/chart-pie/chart-pie.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +41,9 @@ import { AuthInterceptor } from './services/auth.intercepter';
     ModalAddMemberComponent,
     DbListStatusComponent,
     ModalAddStatusComponent,
+    ModalAddTagComponent,
+    DbListTagComponent,
+    ChartPieComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +53,7 @@ import { AuthInterceptor } from './services/auth.intercepter';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
+    NgApexchartsModule,
   ],
   providers: [
     {

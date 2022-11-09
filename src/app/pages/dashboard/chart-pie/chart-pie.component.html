@@ -1,0 +1,23 @@
+<div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+    <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+        <div class="flex justify-between">
+            <h2 class="pl-4">Tiến độ dự án </h2>
+
+        </div>
+        <div class="flex flex-col h-80">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+                        <div class="ml-6">
+                            <div id="chart">
+                                <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!"
+                                    [labels]="chartOptions.labels" [title]="chartOptions.title!"
+                                    [theme]="chartOptions.theme!" [responsive]="chartOptions.responsive!"></apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
