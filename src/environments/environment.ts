@@ -9,7 +9,9 @@ export const environment = {
   project:`${apiURL}/project`,
   projectMember:`${apiURL}/project-detail`,
   member:`${apiURL}/project/addMember`,
-  getmember:`${apiURL}/project/members`
+  getmember:`${apiURL}/project/members`,
+  todo:`${apiURL}/todo`,
+
 };
 
 /*

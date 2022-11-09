@@ -1,0 +1,70 @@
+<h1 mat-dialog-title class="font-bold">Create Todo</h1>
+<div mat-dialog-content class="h-[500px]">
+  <form [formGroup]="addTodoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-6">
+      <label
+        for="exampleInputEmail2"
+        class="form-label inline-block mb-2 text-gray-700 font-bold"
+        >Title Todo</label
+      >
+      <input
+        type="text"
+        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="exampleInput7"
+        placeholder="Name"
+        formControlName="title"
+      />
+    </div>
+    <div class="form-group mb-6">
+      <label
+        for="exampleInputEmail2"
+        class="form-label inline-block mb-2 text-gray-700 font-bold"
+        >Description Todo</label
+      >
+      <textarea
+        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="exampleFormControlTextarea13"
+        rows="3"
+        placeholder="description"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="form-group mb-6">
+      <label
+        for="default-toggle-size"
+        class="inline-flex relative items-center mb-5 cursor-pointer"
+      >
+        <input
+          type="checkbox"
+          id="default-toggle-size"
+          class="sr-only peer"
+          formControlName="status"
+        />
+        <div
+          class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+        ></div>
+        <span class="ml-5 text-sm text-gray-900 dark:text-gray-300 font-bold"
+          >Trạng thái</span
+        >
+      </label>
+    </div>
+    <div class="form-group mb-6">
+      <label
+        for="exampleInputEmail2"
+        class="form-label inline-block mb-2 text-gray-700 font-bold"
+        >Thời hạn</label
+      >
+      <input
+        type="date"
+        class="form-control block w-[30%] px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="exampleInput7"
+        formControlName="deadline"
+      />
+    </div>
+
+    <div mat-dialog-actions>
+      <button type="submit" mat-raised-button color="primary">ADD</button>
+      <button mat-raised-button color="warn" mat-dialog-close>Đóng</button>
+    </div>
+  </form>
+</div>

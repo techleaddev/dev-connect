@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/app/services/project.service';
 import { ModalTagComponent } from '../modal-tag/modal-tag.component';
 
@@ -18,7 +17,6 @@ export class TagComponent implements OnInit {
     public dialog: MatDialog,
     private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
-    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {

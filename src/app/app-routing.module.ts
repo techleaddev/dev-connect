@@ -6,6 +6,7 @@ import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
+import { TodoListComponent } from './pages/dashboard/todo-list/todo-list.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
@@ -34,12 +35,16 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    children:[
+    children: [
       {
-        path:':id',
-        component:HomeComponent
-      }
-    ]
+        path: 'todo',
+        component: TodoListComponent,
+      },
+      {
+        path: ':id',
+        component: HomeComponent,
+      },
+    ],
   },
 ];
 

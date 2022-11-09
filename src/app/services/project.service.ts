@@ -100,4 +100,11 @@ export class ProjectService {
       })
       .subscribe((data) => this.tag.next(data));
   }
+  //ToDo 
+  addToDo(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.todo}`, data, {
+      headers: this.headers,
+    });
+  }
+
 }

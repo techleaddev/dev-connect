@@ -23,6 +23,8 @@ import { ChartComponents } from './pages/dashboard/chart/chart.component';
 import { TagComponent } from './pages/dashboard/tag/tag.component';
 import { ModalTagComponent } from './pages/dashboard/modal-tag/modal-tag.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TodoListComponent } from './pages/dashboard/todo-list/todo-list.component';
+import { ModalTodoComponent } from './pages/dashboard/modal-todo/modal-todo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ChartComponents,
     TagComponent,
     ModalTagComponent,
+    TodoListComponent,
+    ModalTodoComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     BrowserAnimationsModule,
     MateriaModule,
     NgApexchartsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
