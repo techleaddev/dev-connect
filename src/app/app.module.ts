@@ -19,6 +19,10 @@ import { StatusComponent } from './pages/dashboard/status/status.component';
 import { MemberComponent } from './pages/dashboard/member/member.component';
 import { ModalMemberComponent } from './pages/dashboard/modal-member/modal-member.component';
 import { ModalStatusComponent } from './pages/dashboard/modal-status/modal-status.component';
+import { ChartComponents } from './pages/dashboard/chart/chart.component';
+import { TagComponent } from './pages/dashboard/tag/tag.component';
+import { ModalTagComponent } from './pages/dashboard/modal-tag/modal-tag.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +37,10 @@ import { ModalStatusComponent } from './pages/dashboard/modal-status/modal-statu
     StatusComponent,
     MemberComponent,
     ModalMemberComponent,
-    ModalStatusComponent
+    ModalStatusComponent,
+    ChartComponents,
+    TagComponent,
+    ModalTagComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +50,7 @@ import { ModalStatusComponent } from './pages/dashboard/modal-status/modal-statu
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MateriaModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

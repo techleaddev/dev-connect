@@ -11,6 +11,8 @@ export class ProjectService {
   Project = new ReplaySubject<any>(1);
   member = new ReplaySubject<any>(1);
   status = new ReplaySubject<any>(1);
+  tag = new ReplaySubject<any>(1);
+
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
     const token = JSON.parse(localStorage.getItem('token') as string);
@@ -83,5 +85,19 @@ export class ProjectService {
         headers: this.headers,
       })
       .subscribe((data) => this.status.next(data));
+  }
+  // tag
+
+  AddTag(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.project}/tag`, data, {
+      headers: this.headers,
+    });
+  }
+  getTag(id: string): void {
+    this.http
+      .get<any[]>(`${environment.project}/tag/${id}`, {
+        headers: this.headers,
+      })
+      .subscribe((data) => this.tag.next(data));
   }
 }
