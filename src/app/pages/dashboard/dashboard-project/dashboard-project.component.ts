@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class DashboardProjectComponent implements OnInit {
   dbFormProject:FormGroup; 
   projectId: string;
-  isDisableForm = true
+  isDisableForm = true;
   constructor(
     private projectService: ProjectService,
     private activatedRoute: ActivatedRoute,
@@ -42,7 +42,7 @@ export class DashboardProjectComponent implements OnInit {
         this.dbFormProject.patchValue({
           name:data.name,
           description:data.description,
-          readme:data.readme
+          readme:data.readme,
         })
       })
     }
@@ -56,6 +56,7 @@ export class DashboardProjectComponent implements OnInit {
     if(this.projectId !== undefined ){
       return this.projectService.updateProject(this.projectId, submitData).subscribe((data)=>{
         this.toast.success("Sửa thành công")
+        this.onClick()
       }, (e)=>{
         this.toast.error(e.error.message)
       })

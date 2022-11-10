@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Thêm Tag</h1>
+<div mat-dialog-content class="">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formAddTag">
+        <div class="form-group mb-6">
+            <label for="nameProject" class="form-label inline-block mb-2 text-gray-700 font-medium text-base">Tên
+                tag</label>
+            <input type="text" formControlName="title" class="form-control block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7"
+                placeholder="Tên tag">
+            <app-show-validate [field]="formAddTag.get('title')" key="Tên tag"></app-show-validate>
+        </div>
+        <input type="hidden" name="" id="" formControlName="projectId">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded">Thêm</button>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button type="button" mat-button [mat-dialog-close]="true"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded">Đóng</button>
+</div>

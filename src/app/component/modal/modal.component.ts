@@ -8,39 +8,35 @@ import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  formProject: FormGroup
+  formProject: FormGroup;
 
   constructor(
     private projectService: ProjectService,
-    private toast : ToastrService,
-    public dialogRef: MatDialogRef<ModalComponent>,
+    private toast: ToastrService,
+    public dialogRef: MatDialogRef<ModalComponent>
   ) {
     this.formProject = new FormGroup({
-      name: new FormControl('', [
-        Validators.required,
-      ]),
-      description: new FormControl('', [
-        Validators.required
-      ]),
-      readme: new FormControl('', [
-        Validators.required
-      ])
-    })
-   }
-
-  ngOnInit(): void {
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      readme: new FormControl('', [Validators.required]),
+    });
   }
-  
-  onSubmit(){
-    this.projectService.createProject(this.formProject.value).subscribe(data=>{
-      this.toast.success("Thêm thành công")
-      this.projectService.getAllProject()
-      this.dialogRef.close()
-    }, (e)=>{
-      this.toast.error(e.error.message)
-    })
+
+  ngOnInit(): void {}
+
+  onSubmit() {
+    this.projectService.createProject(this.formProject.value).subscribe(
+      (data) => {
+        this.toast.success('Thêm thành công');
+        this.projectService.getAllProject();
+        this.dialogRef.close();
+      },
+      (e) => {
+        this.toast.error(e.error.message);
+      }
+    );
   }
 }

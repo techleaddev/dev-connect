@@ -1,0 +1,32 @@
+<div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+    <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+        <div class="flex justify-between">
+            <h2 class="pl-4">List Member</h2>
+            <button class="bg-blue-500 hover:bg-blue-700 text-sm font-thin text-white rounded px-2 mt-2 mr-2"
+                (click)="toggleModal()">
+                Thêm thành viên
+            </button>
+        </div>
+        <div class="flex flex-col h-80">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+                        <table class="min-w-full">
+                            <tbody>
+                                <tr class="border-b" *ngFor="let item of members">
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                        {{item.name}}
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-right">
+                                        <button (click)="onDelete()"
+                                            class="bg-red-500 hover:bg-red-700 text-base font-normal text-white rounded px-2">Xóa</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

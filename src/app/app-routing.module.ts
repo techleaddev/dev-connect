@@ -1,3 +1,4 @@
+import { TodoComponent } from './pages/dashboard/todo/todo.component';
 import { DashboardProjectComponent } from './pages/dashboard/dashboard-project/dashboard-project.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,31 +9,35 @@ import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   {
-    path:"signup",
-    component: SignupComponent
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path:"signin",
+    path: 'signin',
     component: SigninComponent,
   },
   {
-    path:"",
-    component:HomepageComponent,
+    path: '',
+    component: HomepageComponent,
   },
   {
-    path:"dashboard",
+    path: 'dashboard',
     component: DashboardComponent,
-    children:[
+    children: [
       {
-        path:':id',
-        component:DashboardProjectComponent
-      }
-    ]
-  }
+        path: 'todo',
+        component: TodoComponent,
+      },
+      {
+        path: ':id',
+        component: DashboardProjectComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
