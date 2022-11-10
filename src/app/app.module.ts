@@ -28,6 +28,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartPieComponent } from './pages/dashboard/chart-pie/chart-pie.component';
 import { TodoComponent } from './pages/dashboard/todo/todo.component';
 import { ModalTodoComponent } from './component/modal-todo/modal-todo.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import { ModalTodoComponent } from './component/modal-todo/modal-todo.component'
     BrowserAnimationsModule,
     MatDialogModule,
     NgApexchartsModule,
+    DragDropModule,
   ],
   providers: [
     {
