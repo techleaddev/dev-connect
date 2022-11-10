@@ -12,6 +12,7 @@ export class ProjectService {
   member = new ReplaySubject<any>(1);
   status = new ReplaySubject<any>(1);
   tag = new ReplaySubject<any>(1);
+  todo = new ReplaySubject<any>(1);
 
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
@@ -106,5 +107,11 @@ export class ProjectService {
       headers: this.headers,
     });
   }
-
+  getToDo(): void {
+    this.http
+      .get<any[]>(`${environment.todo}?searchKey=`, {
+        headers: this.headers,
+      })
+      .subscribe((data) => this.todo.next(data));
+  }
 }
