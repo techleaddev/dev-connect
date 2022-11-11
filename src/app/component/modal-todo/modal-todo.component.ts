@@ -18,7 +18,12 @@ export class ModalTodoComponent implements OnInit {
   title: string = '';
   button: string = '';
 
-  formTodo: FormGroup;
+  formTodo: FormGroup = new FormGroup({
+    title: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    status: new FormControl('', []),
+    deadline: new FormControl('', []),
+  });
 
   constructor(
     private todoService: TodoService,
@@ -26,14 +31,7 @@ export class ModalTodoComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalTodoComponent>,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { todo: any }
-  ) {
-    this.formTodo = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      status: new FormControl('', []),
-      deadline: new FormControl('', []),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.formTodo.patchValue({

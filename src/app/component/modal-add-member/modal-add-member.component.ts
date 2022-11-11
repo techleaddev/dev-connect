@@ -16,7 +16,10 @@ import { Component, Inject, OnInit } from '@angular/core';
   styleUrls: ['./modal-add-member.component.scss'],
 })
 export class ModalAddMemberComponent implements OnInit {
-  formAddMember: FormGroup;
+  formAddMember: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required]),
+    projectId: new FormControl(''),
+  });
   pjId: string = '';
   members: any[] = [];
   constructor(
@@ -27,12 +30,7 @@ export class ModalAddMemberComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { pjId: string },
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute
-  ) {
-    this.formAddMember = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      projectId: new FormControl(''),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.projectService.getProject(this.data.pjId).subscribe((data) => {

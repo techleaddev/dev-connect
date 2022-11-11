@@ -19,7 +19,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 export class ModalAddStatusComponent implements OnInit {
   status: [] = [];
   pjId: string = '';
-  formAddStatus: FormGroup;
+  formAddStatus: FormGroup = this.fb.group({
+    projectId: [''],
+    statusData: this.fb.group({
+      name: ['', Validators.required],
+      description: ['', [Validators.required]],
+      color: ['', Validators.required],
+    }),
+  });
   constructor(
     private toast: ToastrService,
     public dialogRef: MatDialogRef<ModalAddStatusComponent>,
@@ -28,16 +35,7 @@ export class ModalAddStatusComponent implements OnInit {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private statusService: StatusService
-  ) {
-    this.formAddStatus = this.fb.group({
-      projectId: [''],
-      statusData: this.fb.group({
-        name: ['', Validators.required],
-        description: ['', [Validators.required]],
-        color: ['', Validators.required],
-      }),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.projectService.getProject(this.data.pjId).subscribe((data: any) => {

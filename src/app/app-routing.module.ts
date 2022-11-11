@@ -29,7 +29,7 @@ const routes: Routes = [
         component: TodoComponent,
       },
       {
-        path: ':id',
+        path: 'common',
         component: DashboardProjectComponent,
       },
     ],

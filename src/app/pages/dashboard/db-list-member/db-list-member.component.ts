@@ -1,3 +1,4 @@
+import { CommonService } from './../../../services/common.service';
 import { ToastrService } from 'ngx-toastr';
 import { MemberService } from './../../../services/member.service';
 import { ActivatedRoute } from '@angular/router';
@@ -18,18 +19,23 @@ export class DbListMemberComponent implements OnInit {
     private dialog: MatDialog,
     private activatedRouter: ActivatedRoute,
     private memberService: MemberService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
     this.getAllMember();
   }
   getAllMember() {
-    this.pjId = this.activatedRouter.snapshot.params['id'];
-    this.memberService.getAllMember(this.pjId);
-    this.memberService.memberOb.subscribe((data) => {
-      data.map((item) => (this.memberId = item.member_id));
-      this.members = data;
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.pjId = id;
+        this.memberService.getAllMember(this.pjId);
+        this.memberService.memberOb.subscribe((data) => {
+          data.map((item) => (this.memberId = item.member_id));
+          this.members = data;
+        });
+      }
     });
   }
   onDelete() {
@@ -47,7 +53,11 @@ export class DbListMemberComponent implements OnInit {
     }
   }
   toggleModal() {
-    this.pjId = this.activatedRouter.snapshot.params['id'];
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.pjId = id;
+      }
+    });
     this.dialog.open(ModalAddMemberComponent, {
       width: '30%',
       data: { pjId: this.pjId },
