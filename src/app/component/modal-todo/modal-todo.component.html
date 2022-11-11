@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>CREATE TODO</h1>
+<!-- <h1 *ngIf="click" mat-dialog-title>EDIT TODO</h1> -->
+<h1 mat-dialog-title>{{title}}</h1>
 <div mat-dialog-content class="h-[400px] ">
     <form [formGroup]="formTodo" (ngSubmit)="onSubmit()">
         <div class="form-group mb-6">
@@ -75,7 +76,7 @@
             active:bg-blue-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out">Tạo mới</button>
+            ease-in-out">{{button}}</button>
     </form>
 </div>
 <div mat-dialog-actions>

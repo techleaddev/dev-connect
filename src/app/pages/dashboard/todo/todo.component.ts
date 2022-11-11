@@ -15,6 +15,8 @@ export class TodoComponent implements OnInit {
   todo: any[] = [];
 
   todoId: string = '';
+
+  number: number = 0;
   constructor(
     private dialog: MatDialog,
     private todoService: TodoService,
@@ -23,6 +25,19 @@ export class TodoComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.todo, event.previousIndex, event.currentIndex);
+
+    const todoIdOb = {
+      id: this.todoId,
+      newNumber: this.number,
+    };
+    this.todoService.changeTodo(todoIdOb).subscribe(
+      (data) => {
+        this.toast.success('DONE');
+      },
+      (e) => {
+        this.toast.error(e.error.message);
+      }
+    );
   }
   ngOnInit(): void {
     this.getAllTodo();
@@ -34,6 +49,8 @@ export class TodoComponent implements OnInit {
       data.map((item) => {
         item.deadline = moment(item.deadline, 'YYYY/MM/DD').calendar();
         this.todoId = item._id;
+
+        this.number = item.number;
       });
       this.todo = data;
     });
@@ -53,6 +70,7 @@ export class TodoComponent implements OnInit {
       );
     }
   }
+
   toggleModal(item?: any) {
     this.dialog.open(ModalTodoComponent, {
       width: '30%',

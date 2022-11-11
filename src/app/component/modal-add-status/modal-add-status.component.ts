@@ -17,8 +17,9 @@ import { Component, Inject, OnInit } from '@angular/core';
   styleUrls: ['./modal-add-status.component.scss'],
 })
 export class ModalAddStatusComponent implements OnInit {
-  status: any[] = [];
+  status: [] = [];
   pjId: string = '';
+  formAddStatus: FormGroup;
   constructor(
     private toast: ToastrService,
     public dialogRef: MatDialogRef<ModalAddStatusComponent>,
@@ -27,16 +28,17 @@ export class ModalAddStatusComponent implements OnInit {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private statusService: StatusService
-  ) {}
+  ) {
+    this.formAddStatus = this.fb.group({
+      projectId: [''],
+      statusData: this.fb.group({
+        name: ['', Validators.required],
+        description: ['', [Validators.required]],
+        color: ['', Validators.required],
+      }),
+    });
+  }
 
-  formAddStatus = this.fb.group({
-    projectId: [''],
-    statusData: this.fb.group({
-      name: ['', Validators.required],
-      description: ['', [Validators.required]],
-      color: ['', Validators.required],
-    }),
-  });
   ngOnInit(): void {
     this.projectService.getProject(this.data.pjId).subscribe((data: any) => {
       this.formAddStatus.patchValue({

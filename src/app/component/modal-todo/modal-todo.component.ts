@@ -15,25 +15,36 @@ import * as moment from 'moment';
   styleUrls: ['./modal-todo.component.scss'],
 })
 export class ModalTodoComponent implements OnInit {
-  formTodo = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-    status: new FormControl('', []),
-    deadline: new FormControl('', []),
-  });
+  title: string = '';
+  button: string = '';
+
+  formTodo: FormGroup;
+
   constructor(
     private todoService: TodoService,
     private toast: ToastrService,
     public dialogRef: MatDialogRef<ModalTodoComponent>,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { todo: any }
-  ) {}
+  ) {
+    this.formTodo = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      status: new FormControl('', []),
+      deadline: new FormControl('', []),
+    });
+  }
 
   ngOnInit(): void {
     this.formTodo.patchValue({
       ...this.data.todo,
     });
-    console.log(this.data.todo);
+
+    if (this.data.todo) {
+      (this.title = 'UPDATE TODO'), (this.button = 'UPDATE');
+    } else {
+      (this.title = 'CREATE TODO'), (this.button = 'ADD');
+    }
   }
 
   onSubmit() {
@@ -46,6 +57,8 @@ export class ModalTodoComponent implements OnInit {
       const { status, ...rest } = newData;
       this.todoService.createTodo(rest).subscribe(
         (data) => {
+          console.log(data);
+
           this.toast.success('Thêm thành công');
           this.todoService.getAllToDo();
           this.dialogRef.close();
