@@ -10,20 +10,18 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-status.component.scss'],
 })
 export class ModalStatusComponent implements OnInit {
-  addStatusForm: FormGroup;
+  addStatusForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    color: new FormControl(''),
+    description: new FormControl(''),
+  });
   id = '';
   constructor(
     private projectService: ProjectService,
     private toast: ToastrService,
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { id: string }
-  ) {
-    this.addStatusForm = new FormGroup({
-      name: new FormControl(''),
-      color: new FormControl(''),
-      description: new FormControl(''),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     if (this.data.id) {

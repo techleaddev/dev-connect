@@ -35,13 +35,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+
     children: [
       {
         path: 'todo',
         component: TodoListComponent,
       },
       {
-        path: ':id',
+        path: 'common',
         component: HomeComponent,
       },
     ],

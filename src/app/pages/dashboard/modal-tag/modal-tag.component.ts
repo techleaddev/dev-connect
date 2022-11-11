@@ -10,7 +10,10 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-tag.component.scss'],
 })
 export class ModalTagComponent implements OnInit {
-  addTagForm: FormGroup;
+  addTagForm: FormGroup = new FormGroup({
+    title: new FormControl('', Validators.required),
+    projectId: new FormControl(''),
+  });
   member: any = [];
   id = '';
   constructor(
@@ -18,12 +21,7 @@ export class ModalTagComponent implements OnInit {
     private ProjectService: ProjectService,
     private toast: ToastrService,
     public dialog: MatDialog
-  ) {
-    this.addTagForm = new FormGroup({
-      title: new FormControl('', Validators.required),
-      projectId: new FormControl(''),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     if (this.data.id) {

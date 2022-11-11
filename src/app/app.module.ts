@@ -26,6 +26,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TodoListComponent } from './pages/dashboard/todo-list/todo-list.component';
 import { ModalTodoComponent } from './pages/dashboard/modal-todo/modal-todo.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatSelectModule} from '@angular/material/select'
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     BrowserAnimationsModule,
     MateriaModule,
     NgApexchartsModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
     
   ],
   providers: [],

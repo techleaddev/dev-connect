@@ -14,20 +14,18 @@ export class ModalTodoComponent implements OnInit {
   item = [];
   title = '';
   titleButton = '';
-  addTodoForm: FormGroup;
+  addTodoForm: FormGroup = new FormGroup({
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    deadline: new FormControl('', Validators.required),
+    status: new FormControl(''),
+  });
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { toDoLists: any },
     private projectService: ProjectService,
     private toast: ToastrService,
     public dialog: MatDialog
-  ) {
-    this.addTodoForm = new FormGroup({
-      title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      deadline: new FormControl('', Validators.required),
-      status: new FormControl(''),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.projectService.getToDo();
