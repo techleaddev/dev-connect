@@ -1,6 +1,7 @@
-<h1 mat-dialog-title class="font-bold">Create Todo</h1>
+<h1 mat-dialog-title class="font-bold">{{title}}</h1>
 <div mat-dialog-content class="h-[500px]">
   <form [formGroup]="addTodoForm" (ngSubmit)="onSubmit()">
+  
     <div class="form-group mb-6">
       <label
         for="exampleInputEmail2"
@@ -63,7 +64,7 @@
     </div>
 
     <div mat-dialog-actions>
-      <button type="submit" mat-raised-button color="primary">ADD</button>
+      <button type="submit" mat-raised-button color="primary">{{titleButton}}</button>
       <button mat-raised-button color="warn" mat-dialog-close>Đóng</button>
     </div>
   </form>

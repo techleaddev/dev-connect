@@ -43,7 +43,7 @@
     </form>
   </div>
   <div>
-    <button mat-raised-button color="primary" (click)="OpenPopup()">
+    <button mat-raised-button color="primary" (click)="OpenPopup('')">
       <span><i class="fa-solid fa-plus"></i></span> create
     </button>
   </div>
@@ -54,8 +54,8 @@
     <p>{{ toDoList.description }}</p>
     <p>{{ toDoList.deadline}}</p>
     <div class="flex">
-      <button type="submit" mat-raised-button color="primary">sửa</button>
-      <button class="ml-5" type="submit" mat-raised-button color="warn">
+      <button type="submit" mat-raised-button color="primary" (click)="OpenPopup(toDoList)">sửa</button>
+      <button class="ml-5" type="submit" mat-raised-button color="warn" (click)="onRemove(toDoList._id)">
         Xóa
       </button>
     </div>
