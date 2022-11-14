@@ -8,6 +8,7 @@ import { statusType, statusTypeResponse } from '../types/Status';
 import { MemberType } from '../types/Member';
 import { TagType } from '../types/Tag';
 import { toDoType } from '../types/todo';
+import { ChatType } from '../types/Chats';
 @Injectable({
   providedIn: 'root',
 })
@@ -135,4 +136,11 @@ export class ProjectService {
       headers: this.headers,
     });
   }
+    //Chats 
+createGroupChat (data :ChatType):Observable<ChatType>{
+  return this.http.post<ChatType>(`${environment.chat}`, data, {
+    headers: this.headers,
+  });
+}
+
 }

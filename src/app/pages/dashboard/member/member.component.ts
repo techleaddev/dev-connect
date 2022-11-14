@@ -25,8 +25,7 @@ export class MemberComponent implements OnInit {
   ngOnInit(): void {
     this.commonService.projectId.subscribe((id) => {
       if (id) {
-        this.id = id;
-        this.projectService.GetMember(this.id);
+        this.projectService.GetMember(id);
         this.projectService.member.subscribe((data) => {
           this.member = data;
           data.map((item: any) => {

@@ -28,6 +28,8 @@ import { ModalTodoComponent } from './pages/dashboard/modal-todo/modal-todo.comp
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MessagesComponent } from './pages/dashboard/messages/messages.component';
+import { ModalMessagesComponent } from './pages/dashboard/modal-messages/modal-messages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ModalTagComponent,
     TodoListComponent,
     ModalTodoComponent,
+    MessagesComponent,
+    ModalMessagesComponent,
     
   ],
   imports: [
