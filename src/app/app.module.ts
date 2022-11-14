@@ -26,7 +26,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TodoListComponent } from './pages/dashboard/todo-list/todo-list.component';
 import { ModalTodoComponent } from './pages/dashboard/modal-todo/modal-todo.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,9 @@ import {MatSelectModule} from '@angular/material/select'
     MateriaModule,
     NgApexchartsModule,
     DragDropModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
+
     
   ],
   providers: [],
