@@ -1,3 +1,4 @@
+import { ChatroomComponent } from './pages/dashboard/chatroom/chatroom.component';
 import { TodoComponent } from './pages/dashboard/todo/todo.component';
 import { DashboardProjectComponent } from './pages/dashboard/dashboard-project/dashboard-project.component';
 import { NgModule } from '@angular/core';
@@ -29,8 +30,12 @@ const routes: Routes = [
         component: TodoComponent,
       },
       {
-        path: 'common',
+        path: 'detail',
         component: DashboardProjectComponent,
+      },
+      {
+        path: 'chatroom',
+        component: ChatroomComponent,
       },
     ],
   },

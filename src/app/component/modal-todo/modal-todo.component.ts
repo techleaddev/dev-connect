@@ -55,8 +55,6 @@ export class ModalTodoComponent implements OnInit {
       const { status, ...rest } = newData;
       this.todoService.createTodo(rest).subscribe(
         (data) => {
-          console.log(data);
-
           this.toast.success('Thêm thành công');
           this.todoService.getAllToDo();
           this.dialogRef.close();

@@ -31,6 +31,8 @@ import { ModalTodoComponent } from './component/modal-todo/modal-todo.component'
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MatMenuModule } from '@angular/material/menu';
+import { ChatroomComponent } from './pages/dashboard/chatroom/chatroom.component';
+import { ModalAddGroupChatComponent } from './component/modal-add-group-chat/modal-add-group-chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,8 @@ import { MatMenuModule } from '@angular/material/menu';
     ChartPieComponent,
     TodoComponent,
     ModalTodoComponent,
+    ChatroomComponent,
+    ModalAddGroupChatComponent,
   ],
   imports: [
     BrowserModule,

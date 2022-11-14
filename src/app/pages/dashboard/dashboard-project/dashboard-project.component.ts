@@ -94,15 +94,11 @@ export class DashboardProjectComponent implements OnInit {
   }
 
   clickDetail(id: string) {
-    this.commonService.projectId.subscribe((item) => {
-      if (item) {
-        this.projectService.getProject(id).subscribe((data) => {
-          this.dbFormProject.patchValue({
-            ...this.projects.data,
-          });
-        });
-      }
+    const data = JSON.parse(localStorage.getItem('Project') as string);
+    data.map((item: any) => {
+      item._id = id;
     });
+    this.commonService.setProjectId(id);
   }
 
   toggleModal(item?: any) {

@@ -12,6 +12,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {}
 
   onClick() {
-    this.router.navigateByUrl('/dashboard/common');
+    this.router.navigateByUrl('/dashboard/detail');
   }
 }

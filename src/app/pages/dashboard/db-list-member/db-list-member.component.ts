@@ -30,12 +30,12 @@ export class DbListMemberComponent implements OnInit {
     this.commonService.projectId.subscribe((id) => {
       if (id) {
         this.pjId = id;
-        this.memberService.getAllMember(this.pjId);
-        this.memberService.memberOb.subscribe((data) => {
-          data.map((item) => (this.memberId = item.member_id));
-          this.members = data;
-        });
       }
+      this.memberService.getAllMember(this.pjId);
+      this.memberService.memberOb.subscribe((data) => {
+        data.map((item) => (this.memberId = item.member_id));
+        this.members = data;
+      });
     });
   }
   onDelete() {

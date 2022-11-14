@@ -35,7 +35,7 @@ export class ProjectListComponent implements OnInit {
       item._id = id;
     });
     this.commonService.setProjectId(id);
-    this.router.navigateByUrl(`/dashboard/common`);
+    this.router.navigateByUrl(`/dashboard/detail`);
   }
   onDelete(id: any) {
     const confirmDelete = confirm('Bạn có chắc chắn xóa không?');
