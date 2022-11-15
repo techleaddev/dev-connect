@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-messages.component.scss'],
 })
 export class ModalMessagesComponent implements OnInit {
+  check = true;
   formChats: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     all: new FormControl(false),
@@ -54,4 +55,11 @@ export class ModalMessagesComponent implements OnInit {
       }
     );
   }
+  // onChange(e:any){
+  //     if(e.target.checked){
+  //       this.check= false;
+  //     }else{
+  //       this.check= true;
+  //     }
+  // }
 }

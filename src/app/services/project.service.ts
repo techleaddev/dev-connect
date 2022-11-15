@@ -18,6 +18,7 @@ export class ProjectService {
   status = new ReplaySubject<any>(1);
   tag = new ReplaySubject<any>(1);
   todo = new ReplaySubject<any>(1);
+  chats = new ReplaySubject<any>(1);
 
   constructor(private http: HttpClient, private httpService: HttpService) {}
   get headers(): HttpHeaders {
@@ -142,5 +143,11 @@ createGroupChat (data :ChatType):Observable<ChatType>{
     headers: this.headers,
   });
 }
-
+getAllChat(id:string): void {
+  this.http
+    .get<[]>(`${environment.chatsAll}/chat?projectId=${id}`, {
+      headers: this.headers,
+    })
+    .subscribe((data) => this.chats.next(data));
+}
 }
