@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
@@ -25,11 +25,12 @@ import { ModalTagComponent } from './pages/dashboard/modal-tag/modal-tag.compone
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TodoListComponent } from './pages/dashboard/todo-list/todo-list.component';
 import { ModalTodoComponent } from './pages/dashboard/modal-todo/modal-todo.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {MatSelectModule} from '@angular/material/select';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MessagesComponent } from './pages/dashboard/messages/messages.component';
 import { ModalMessagesComponent } from './pages/dashboard/modal-messages/modal-messages.component';
+import { NetworkInterceptor } from './network/network.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,6 @@ import { ModalMessagesComponent } from './pages/dashboard/modal-messages/modal-m
     ModalTodoComponent,
     MessagesComponent,
     ModalMessagesComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -65,11 +65,15 @@ import { ModalMessagesComponent } from './pages/dashboard/modal-messages/modal-m
     NgApexchartsModule,
     DragDropModule,
     MatSelectModule,
-    MatProgressSpinnerModule
-
-    
+    MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NetworkInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
