@@ -31,8 +31,13 @@ import { ModalTodoComponent } from './component/modal-todo/modal-todo.component'
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { ChatroomComponent } from './pages/dashboard/chatroom/chatroom.component';
 import { ModalAddGroupChatComponent } from './component/modal-add-group-chat/modal-add-group-chat.component';
+import { NetworkInterceptor } from './network/network.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,11 +72,20 @@ import { ModalAddGroupChatComponent } from './component/modal-add-group-chat/mod
     NgApexchartsModule,
     DragDropModule,
     MatMenuModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NetworkInterceptor,
       multi: true,
     },
   ],

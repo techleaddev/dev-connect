@@ -58,6 +58,13 @@ export class ModalAddGroupChatComponent implements OnInit {
     });
   }
 
+  change(e: any) {
+    if (e.target.checked) {
+      this.hidden = false;
+    } else {
+      this.hidden = true;
+    }
+  }
   onSubmit() {
     const newData = this.formAddGroup.value;
     this.chatService.createGroupChat(newData).subscribe(

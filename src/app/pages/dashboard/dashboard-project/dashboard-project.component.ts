@@ -1,7 +1,6 @@
 import { CommonService } from './../../../services/common.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalTodoComponent } from './../../../component/modal-todo/modal-todo.component';
-import { Project } from './../../../types/project';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,6 +18,7 @@ export class DashboardProjectComponent implements OnInit {
     description: new FormControl('', [Validators.required]),
     readme: new FormControl('', [Validators.required]),
   });
+  detail = new FormControl('');
   projectId: string = '';
   isDisableForm = true;
   project: any = [];
@@ -34,6 +34,7 @@ export class DashboardProjectComponent implements OnInit {
   ngOnInit(): void {
     this.commonService.initProjectId();
     this.commonService.projectId.subscribe((id) => {
+      this.detail.setValue(id);
       if (id) {
         this.projectId = id;
         this.projectService.getProject(this.projectId).subscribe((data) => {
@@ -101,6 +102,9 @@ export class DashboardProjectComponent implements OnInit {
     this.commonService.setProjectId(id);
   }
 
+  changeValue(e: any) {
+    console.log(e);
+  }
   toggleModal(item?: any) {
     this.dialog.open(ModalTodoComponent, {
       width: '30%',

@@ -1,10 +1,10 @@
-<button class="ml-5 p-1 border border-solid border-black rounded" mat-button
-    [matMenuTriggerFor]="menu">{{project.name}}</button>
-<mat-menu #menu="matMenu">
-    <button (click)="clickDetail(item._id)" *ngFor="let item of projects" mat-menu-item>
-        {{item.name}}</button>
-</mat-menu>
-
+<mat-form-field appearance="fill" class="ml-4">
+    <mat-select [formControl]="detail">
+        <mat-option *ngFor="let item of projects" [value]="item._id" (click)="clickDetail(item._id)">
+            {{item.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
 <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 mt-8">
     <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
         <form class="m-4" [formGroup]="dbFormProject" (submit)="onSubmit()">
