@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const apiUrl = 'https://dev-connect-rest-api.herokuapp.com';
+export const apiUrl = 'https://dev-connect-rest-api.herokuapp.com';
 
 export const environment = {
   production: false,

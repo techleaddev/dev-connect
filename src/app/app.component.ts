@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  loading$ = this.loading.loading$;
   title = 'dev-connect';
+  loading$ = this.loading.loading$;
   constructor(public loading: CommonService) {}
 }

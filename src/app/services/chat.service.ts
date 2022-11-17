@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class ChatService {
   groupChatOb = new ReplaySubject<[]>(1);
+  ChatOb = new ReplaySubject<[]>(1);
 
   constructor(private http: HttpClient) {}
 
@@ -21,5 +22,15 @@ export class ChatService {
       .subscribe((data) => {
         this.groupChatOb.next(data);
       });
+  }
+
+  getChatContent(id: string): void {
+    this.http.get<any>(`${environment.chat}/${id}`).subscribe((data) => {
+      this.ChatOb.next(data);
+    });
+  }
+
+  sendMessage(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.chat}`, data);
   }
 }

@@ -1,3 +1,4 @@
+import { environment, apiUrl } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -38,6 +39,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChatroomComponent } from './pages/dashboard/chatroom/chatroom.component';
 import { ModalAddGroupChatComponent } from './component/modal-add-group-chat/modal-add-group-chat.component';
 import { NetworkInterceptor } from './network/network.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = {
+  url: apiUrl,
+  options: {},
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +84,12 @@ import { NetworkInterceptor } from './network/network.interceptor';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
+    SocketIoModule.forRoot(config),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('user'),
+      },
+    }),
   ],
   providers: [
     {
