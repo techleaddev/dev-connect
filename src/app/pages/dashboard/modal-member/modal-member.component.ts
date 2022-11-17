@@ -11,7 +11,10 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-member.component.scss'],
 })
 export class ModalMemberComponent implements OnInit {
-  AddmemberForm: FormGroup;
+  AddmemberForm: FormGroup = new FormGroup({
+    email: new FormControl('', Validators.required),
+    projectId: new FormControl(''),
+  });
   member: any = [];
   id: string;
   constructor(
@@ -22,10 +25,6 @@ export class ModalMemberComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.id = '';
-    this.AddmemberForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      projectId: new FormControl(''),
-    });
   }
 
   ngOnInit(): void {

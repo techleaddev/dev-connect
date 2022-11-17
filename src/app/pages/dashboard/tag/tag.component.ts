@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { ModalTagComponent } from '../modal-tag/modal-tag.component';
 
@@ -17,15 +18,18 @@ export class TagComponent implements OnInit {
     public dialog: MatDialog,
     private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
+    private commonService: CommonService,
   ) {}
 
   ngOnInit(): void {
-    this.id = this.activatedRouter.snapshot.params['id'];
-    this.projectService.getTag(this.id);
-    this.projectService.tag.subscribe((data) => {
-      console.log('tag',data);
-      
-      this.tags = data;
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.id = id;
+        this.projectService.getTag(this.id);
+        this.projectService.tag.subscribe((data) => {
+          this.tags = data;
+        });
+      }
     });
   }
   OpenPopup() {
@@ -36,7 +40,5 @@ export class TagComponent implements OnInit {
       data: { id: this.id },
     });
   }
-  onRemove(){
-
-  }
+  onRemove() {}
 }

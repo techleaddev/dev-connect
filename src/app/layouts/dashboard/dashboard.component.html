@@ -97,13 +97,13 @@
               <li
                 class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
               >
-                <a
-                  href="index.html"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                <p
+               (click)="onClick() "
+                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline cursor-pointer"
                 >
                   <i class="fas fa-tachometer-alt float-left mx-2"></i>
                   Dashboard
-                </a>
+                </p>
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
@@ -116,11 +116,11 @@
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
-                  href="buttons.html"
+                 routerLink="chats"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                 >
-                  <i class="fas fa-grip-horizontal float-left mx-2"></i>
-                  Buttons
+                <i class="fa-solid fa-comments float-left mx-2"></i>
+                  Chats
                 </a>
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">

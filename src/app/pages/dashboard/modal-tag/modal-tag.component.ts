@@ -10,7 +10,7 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-tag.component.scss'],
 })
 export class ModalTagComponent implements OnInit {
-  addTagForm = new FormGroup({
+  addTagForm: FormGroup = new FormGroup({
     title: new FormControl('', Validators.required),
     projectId: new FormControl(''),
   });

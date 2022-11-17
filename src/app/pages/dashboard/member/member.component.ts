@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/services/common.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { ModalMemberComponent } from '../modal-member/modal-member.component';
 @Component({
@@ -17,17 +18,21 @@ export class MemberComponent implements OnInit {
     public dialog: MatDialog,
     private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
-    this.id = this.activatedRouter.snapshot.params['id'];
-    this.projectService.GetMember(this.id);
-    this.projectService.member.subscribe((data) => {
-      this.member = data;
-      data.map((item: any) => {
-        this.memberId = item.member_id;
-      });
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.projectService.GetMember(id);
+        this.projectService.member.subscribe((data) => {
+          this.member = data;
+          data.map((item: any) => {
+            this.memberId = item.member_id;
+          });
+        });
+      }
     });
   }
   OpenPopup() {

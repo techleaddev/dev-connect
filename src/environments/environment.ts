@@ -11,6 +11,8 @@ export const environment = {
   member:`${apiURL}/project/addMember`,
   getmember:`${apiURL}/project/members`,
   todo:`${apiURL}/todo`,
+  chat:`${apiURL}/chat/group`,
+  chatsAll:`${apiURL}`,
 
 };
 

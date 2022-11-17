@@ -10,17 +10,16 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./modal-popup.component.scss'],
 })
 export class ModalPopupComponent implements OnInit {
-  projectForm: FormGroup;
+  projectForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    readme: new FormControl('', Validators.required),
+  });;
   constructor(
     private toast: ToastrService,
     private projectService: ProjectService,
     public dialog: MatDialog
   ) {
-    this.projectForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      readme: new FormControl('', Validators.required),
-    });
   }
 
   ngOnInit(): void {}

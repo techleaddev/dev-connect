@@ -10,7 +10,7 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-status.component.scss'],
 })
 export class ModalStatusComponent implements OnInit {
-  addStatusForm = new FormGroup({
+  addStatusForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     color: new FormControl(''),
     description: new FormControl(''),

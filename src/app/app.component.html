@@ -1,1 +1,10 @@
 <router-outlet></router-outlet>
+<!-- <div class="loader-container" *ngIf="loading$ | async">
+  <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
+</div> -->
+<mat-progress-spinner
+  *ngIf="loading$ | async"
+  [mode]="'indeterminate'"
+></mat-progress-spinner>
+<!-- <button mat-raised-button (click)="loader.show()">show</button>
+<button mat-raised-button (click)="loader.hide()">hide</button> -->
