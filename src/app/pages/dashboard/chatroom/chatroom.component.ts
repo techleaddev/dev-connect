@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { map } from 'rxjs';
 import * as moment from 'moment';
 
 @Component({
