@@ -119,7 +119,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="./pages/sign-in.html">
+                        href="">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-single-copy-04"></i>
@@ -176,12 +176,15 @@
                         </div>
                     </div>
                     <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
-                        <li class="flex items-center">
-                            <a href="./pages/sign-in.html"
-                                class="block px-0 py-2 text-sm font-semibold text-black transition-all ease-nav-brand">
+                        <li class="flex items-center dropdown">
+                            <a routerLink="#"
+                                class="block px-0 py-2 text-sm font-semibold text-black transition-all ease-nav-brand dropbtn">
                                 <i class="fa fa-user sm:mr-1"></i>
-                                <span class="hidden sm:inline">Sign In</span>
+                                <span class="hidden sm:inline">{{userInfo.first_name}}</span>
                             </a>
+                            <div class="dropdown-content">
+                                <a routerLink="#" (click)="logOut()">LogOut</a>
+                            </div>
                         </li>
                         <li class="flex items-center pl-4 xl:hidden">
                             <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand"

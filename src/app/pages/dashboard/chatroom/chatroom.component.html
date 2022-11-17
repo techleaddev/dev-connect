@@ -23,7 +23,7 @@
             </div>
             <!-- end search compt -->
             <!-- user list -->
-            <div *ngFor="let item of groupChat" (click)="onClickMessage(item.id)"
+            <div (click)="onClickMessage(item.id)" *ngFor="let item of groupChat"
                 [ngClass]="item.id==conversationId ? 'border-blue-600': ''"
                 class="flex flex-row py-4 px-2 items-center border-b-2 border-l-4 cursor-pointer ">
                 <div class="w-1/4">

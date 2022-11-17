@@ -35,6 +35,7 @@ export class ChatroomComponent implements OnInit {
     this.commonService.initProjectId();
     this.socket.fromEvent('new_message').subscribe((data: any) => {
       this.chatService.getChatContent(data._id);
+      console.log(data);
     });
     this.getAllGroupChat();
     this.someMethod();
@@ -57,7 +58,7 @@ export class ChatroomComponent implements OnInit {
     this.chatService.ChatOb.subscribe((data: any) => {
       this.chatContent = data.messages;
       data.messages.map((item: any) => {
-        item.date = moment(item.date).format('hh:mm DD/MM');
+        item.date = moment(item.date).calendar();
       });
       this.conversationId = data._id;
     });

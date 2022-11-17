@@ -9,6 +9,7 @@ export const environment = {
 
   signin: `${apiUrl}/auth/signIn`,
   signup: `${apiUrl}/user/register`,
+  users: `${apiUrl}/user`,
   project: `${apiUrl}/project`,
   member: `${apiUrl}/project`,
   deleteMember: `${apiUrl}/project-detail/member`,
