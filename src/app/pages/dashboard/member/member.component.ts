@@ -25,6 +25,7 @@ export class MemberComponent implements OnInit {
   ngOnInit(): void {
     this.commonService.projectId.subscribe((id) => {
       if (id) {
+        this.id=id;
         this.projectService.GetMember(id);
         this.projectService.member.subscribe((data) => {
           this.member = data;
@@ -36,7 +37,7 @@ export class MemberComponent implements OnInit {
     });
   }
   OpenPopup() {
-    this.id = this.activatedRouter.snapshot.params['id'];
+ 
     let dialogRef = this.dialog.open(ModalMemberComponent, {
       width: '50%',
       enterAnimationDuration: '1000ms',

@@ -34,11 +34,12 @@ export class ModalMessagesComponent implements OnInit {
     this.commonService.projectId.subscribe((id) => {
       this.formChats.patchValue({ projectId: id });
       if (id) {
-        console.log(id);
+       this.id = id
         this.projectService.GetMember(id);
         this.projectService.member.subscribe((data) => {
           this.memberProjects = data;
         });
+        this.projectService.getAllChat(id);
       }
     });
   }
@@ -48,18 +49,21 @@ export class ModalMessagesComponent implements OnInit {
       (data) => {
         this.toast.success('thanh cong');
         this.dialog.closeAll();
+        this.projectService.getAllChat(this.id);
       },
       (e) => {
-        console.log(e);
+        console.log();
+        this.toast.error(e.error.message);
+        this.dialog.closeAll();
         
       }
     );
   }
-  // onChange(e:any){
-  //     if(e.target.checked){
-  //       this.check= false;
-  //     }else{
-  //       this.check= true;
-  //     }
-  // }
+  onChange(e:any){
+      if(e.target.checked){
+        this.check= false;
+      }else{
+        this.check= true;
+      }
+  }
 }

@@ -13,6 +13,7 @@ export const environment = {
   todo:`${apiURL}/todo`,
   chat:`${apiURL}/chat/group`,
   chatsAll:`${apiURL}`,
+  chatPost:`${apiURL}/chat`,
 
 };
 

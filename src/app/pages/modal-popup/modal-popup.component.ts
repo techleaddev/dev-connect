@@ -26,13 +26,11 @@ export class ModalPopupComponent implements OnInit {
   onSubmit() {
     this.projectService.createProject(this.projectForm.value).subscribe(
       (data) => {
-        console.log(data);
         this.toast.success('thanh cong!');
         this.dialog.closeAll();
         this.projectService.getProject();
       },
       (e) => {
-        console.log(e);
         const err = e.error.message;
         this.toast.error(err);
       }
