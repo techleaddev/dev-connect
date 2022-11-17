@@ -1,4 +1,6 @@
-import { Project } from './../../../types/project';
+import { CommonService } from './../../../services/common.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalTodoComponent } from './../../../component/modal-todo/modal-todo.component';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -8,71 +10,107 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-dashboard-project',
   templateUrl: './dashboard-project.component.html',
-  styleUrls: ['./dashboard-project.component.scss']
+  styleUrls: ['./dashboard-project.component.scss'],
 })
 export class DashboardProjectComponent implements OnInit {
-  dbFormProject:FormGroup; 
-  projectId: string;
+  dbFormProject: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    readme: new FormControl('', [Validators.required]),
+  });
+  detail = new FormControl('');
+  projectId: string = '';
   isDisableForm = true;
+  project: any = [];
+  projects: any = [];
   constructor(
     private projectService: ProjectService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
     private toast: ToastrService,
+    private dialog: MatDialog,
+    private commonService: CommonService
+  ) {}
 
-  ) {
-    this.dbFormProject = new FormGroup({
-      name: new FormControl('', [
-        Validators.required,
-      ]),
-      description: new FormControl('', [
-        Validators.required
-      ]),
-      readme: new FormControl('', [
-        Validators.required
-      ])
-    })
-    this.projectId=''
-   }
+  ngOnInit(): void {
+    this.commonService.initProjectId();
+    this.commonService.projectId.subscribe((id) => {
+      this.detail.setValue(id);
+      if (id) {
+        this.projectId = id;
+        this.projectService.getProject(this.projectId).subscribe((data) => {
+          this.dbFormProject.patchValue({
+            name: data.name,
+            description: data.description,
+            readme: data.readme,
+          });
+        });
+      }
+    });
 
-   ngOnInit(): void {
-     this.projectId = this.activatedRoute.snapshot.params['id']
-     if(this.projectId){
-      this.projectService.getProject(this.projectId).subscribe(data=>{
-        this.dbFormProject.patchValue({
-          name:data.name,
-          description:data.description,
-          readme:data.readme,
-        })
-      })
-    }
-    this.dbFormProject.disable()
+    this.dbFormProject.disable();
+
+    this.projectService.getProject(this.projectId).subscribe((data) => {
+      this.project = data;
+    });
+
+    this.projects = this.projectService.getAllProject();
+    this.projectService.projectOb.subscribe((data) => {
+      this.projects = data;
+    });
   }
-  onSubmit(){
-    if(this.isDisableForm){
+
+  onSubmit() {
+    if (this.isDisableForm) {
       return;
     }
-    const submitData = this.dbFormProject.value
-    if(this.projectId !== undefined ){
-      return this.projectService.updateProject(this.projectId, submitData).subscribe((data)=>{
-        this.toast.success("Sửa thành công")
-        this.onClick()
-      }, (e)=>{
-        this.toast.error(e.error.message)
-      })
+    const submitData = this.dbFormProject.value;
+    if (this.projectId !== undefined) {
+      return this.projectService
+        .updateProject(this.projectId, submitData)
+        .subscribe(
+          (data) => {
+            this.toast.success('Sửa thành công');
+            this.onClick();
+          },
+          (e) => {
+            this.toast.error(e.error.message);
+          }
+        );
     }
-    return this.projectService.createProject(submitData).subscribe((data)=>{
-    }, (e)=>{
-      this.toast.error(e.error.message)
-    })
+    return this.projectService.createProject(submitData).subscribe(
+      (data) => {},
+      (e) => {
+        this.toast.error(e.error.message);
+      }
+    );
   }
-  
-  onClick(){
-    if(this.isDisableForm){
-      this.dbFormProject.enable()
-    }else{
-      this.dbFormProject.disable()
+
+  onClick() {
+    if (this.isDisableForm) {
+      this.dbFormProject.enable();
+    } else {
+      this.dbFormProject.disable();
     }
-    this.isDisableForm = !this.isDisableForm
+    this.isDisableForm = !this.isDisableForm;
+  }
+
+  clickDetail(id: string) {
+    const data = JSON.parse(localStorage.getItem('Project') as string);
+    data.map((item: any) => {
+      item._id = id;
+    });
+    this.commonService.setProjectId(id);
+  }
+
+  changeValue(e: any) {
+    console.log(e);
+  }
+  toggleModal(item?: any) {
+    this.dialog.open(ModalTodoComponent, {
+      width: '30%',
+      data: {
+        todo: item,
+      },
+    });
   }
 }

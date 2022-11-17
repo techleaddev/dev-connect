@@ -1,3 +1,4 @@
+import { CommonService } from './../../../services/common.service';
 import { TagService } from './../../../services/tag.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +16,8 @@ export class DbListTagComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private dialog: MatDialog,
-    private tagService: TagService
+    private tagService: TagService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
@@ -23,15 +25,23 @@ export class DbListTagComponent implements OnInit {
   }
 
   getAllTag() {
-    this.pjId = this.activatedRoute.snapshot.params['id'];
-    this.tagService.getAllTag(this.pjId);
-    this.tagService.tagOb.subscribe((data) => {
-      this.tag = data;
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.pjId = id;
+        this.tagService.getAllTag(this.pjId);
+        this.tagService.tagOb.subscribe((data) => {
+          this.tag = data;
+        });
+      }
     });
   }
   onDelete() {}
   toggleModal() {
-    this.pjId = this.activatedRoute.snapshot.params['id'];
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.pjId = id;
+      }
+    });
     this.dialog.open(ModalAddTagComponent, {
       width: '30%',
       data: { pjId: this.pjId },

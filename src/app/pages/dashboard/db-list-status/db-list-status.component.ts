@@ -1,3 +1,4 @@
+import { CommonService } from './../../../services/common.service';
 import { StatusService } from './../../../services/status.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +19,8 @@ export class DbListStatusComponent implements OnInit {
     private dialog: MatDialog,
     private activatedRouter: ActivatedRoute,
     private toast: ToastrService,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
@@ -26,16 +28,24 @@ export class DbListStatusComponent implements OnInit {
   }
 
   getAllStatus() {
-    this.pjId = this.activatedRouter.snapshot.params['id'];
-    this.statusService.getAllStatus(this.pjId);
-    this.statusService.statusOb.subscribe((data) => {
-      this.status = data;
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.pjId = id;
+        this.statusService.getAllStatus(this.pjId);
+        this.statusService.statusOb.subscribe((data) => {
+          this.status = data;
+        });
+      }
     });
   }
   onDelete() {}
 
   toggleModal() {
-    this.pjId = this.activatedRouter.snapshot.params['id'];
+    this.commonService.projectId.subscribe((id) => {
+      if (id) {
+        this.pjId = id;
+      }
+    });
     this.dialog.open(ModalAddStatusComponent, {
       width: '30%',
       data: { pjId: this.pjId },

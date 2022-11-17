@@ -15,6 +15,7 @@ export const environment = {
   status: `${apiUrl}/project`,
   tag: `${apiUrl}/project`,
   todo: `${apiUrl}/todo`,
+  chat: `${apiUrl}/chat`,
 };
 
 /*

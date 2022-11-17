@@ -17,6 +17,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 export class ModalAddTagComponent implements OnInit {
   pjId: string = '';
   tags: any = [];
+  formAddTag: FormGroup = new FormGroup({
+    title: new FormControl('', [Validators.required]),
+    projectId: new FormControl('', []),
+  });
   constructor(
     private tagService: TagService,
     @Inject(MAT_DIALOG_DATA) public data: { pjId: string },
@@ -25,10 +29,7 @@ export class ModalAddTagComponent implements OnInit {
     private toast: ToastrService,
     public dialogRef: MatDialogRef<ModalAddTagComponent>
   ) {}
-  formAddTag = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    projectId: new FormControl('', []),
-  });
+
   ngOnInit(): void {
     this.projectService.getProject(this.data.pjId).subscribe((data: any) => {
       this.formAddTag.patchValue({

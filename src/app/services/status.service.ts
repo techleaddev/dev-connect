@@ -1,3 +1,4 @@
+import { Status } from './../types/status';
 import { ReplaySubject, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,19 +12,19 @@ export class StatusService {
 
   constructor(private http: HttpClient) {}
 
-  createStatus(data: any): Observable<any> {
-    return this.http.post<any>(`${environment.status}/status`, data);
+  createStatus(data: Status): Observable<Status> {
+    return this.http.post<Status>(`${environment.status}/status`, data);
   }
 
   getAllStatus(id: string): void {
     this.http
-      .get<any[]>(`${environment.status}/status/${id}`)
+      .get<Status[]>(`${environment.status}/status/${id}`)
       .subscribe((data) => {
         this.statusOb.next(data);
       });
   }
 
-  removeStatus(id: string): Observable<any> {
-    return this.http.delete<any>(`${environment.status}`);
+  removeStatus(id: string): Observable<string> {
+    return this.http.delete<string>(`${environment.status}`);
   }
 }
