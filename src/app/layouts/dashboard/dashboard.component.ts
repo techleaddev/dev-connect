@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
       this.userInfo = data;
     });
   }
-
   onClick() {
     this.router.navigateByUrl('/dashboard/detail');
   }
