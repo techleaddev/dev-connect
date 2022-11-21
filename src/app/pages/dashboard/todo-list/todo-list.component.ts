@@ -55,16 +55,19 @@ export class TodoListComponent implements OnInit {
       const dataTodo = { id: id, status: false };
       this.projectService.todoCheckBox(dataTodo).subscribe(
         (data) => {
-          console.log(data);
+          console.log(data); 
+           this.projectService.getToDo();
         },
         (e) => {
           console.log(e);
         }
       );
+    
     } else if (status == false) {
       const dataTodo = { id: id, status: true };
       this.projectService.todoCheckBox(dataTodo).subscribe(
-        (data) => {
+        (data) => { 
+          this.projectService.getToDo();
           console.log(data);
         },
         (e) => {
@@ -72,6 +75,6 @@ export class TodoListComponent implements OnInit {
         }
       );
     }
-    this.projectService.getToDo();
+   
   }
 }
