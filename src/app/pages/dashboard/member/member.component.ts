@@ -38,8 +38,8 @@ export class MemberComponent implements OnInit {
  
     let dialogRef = this.dialog.open(ModalMemberComponent, {
       width: '50%',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
+      // enterAnimationDuration: '1000ms',
+      // exitAnimationDuration: '1000ms',
       data: { id: this.id },
     });
   }

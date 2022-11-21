@@ -19,7 +19,8 @@
     
 
     <div mat-dialog-actions>
-      <button type="submit" mat-raised-button color="primary">ADD</button>
+      <button type="submit" mat-raised-button color="primary"  *ngIf="check == 0">ADD</button>
+      <button type="button" mat-raised-button color="primary" *ngIf="check == 1">ADD</button>
       <button mat-raised-button color="warn" mat-dialog-close>Đóng</button>
     </div>
   </form>
