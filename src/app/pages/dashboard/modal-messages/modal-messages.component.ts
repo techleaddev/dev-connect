@@ -52,7 +52,6 @@ export class ModalMessagesComponent implements OnInit {
         this.projectService.getAllChat(this.id);
       },
       (e) => {
-        console.log();
         this.toast.error(e.error.message);
         this.dialog.closeAll();
         

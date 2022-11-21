@@ -29,7 +29,6 @@ export class ModalTodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectService.getToDo();
-    console.log(this.data.toDoLists);
     this.addTodoForm.patchValue({ ...this.data.toDoLists });
     if (!this.data.toDoLists) {
       this.title = 'Create Todo';

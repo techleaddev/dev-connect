@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectType } from 'src/app/types/Project';
-import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -16,18 +14,12 @@ interface Food {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
   id: string;
   formProjectDashboard: FormGroup;
   isDisableForm = true;
   projectIdDetail = new FormControl('');
   projectAlls: any = [];
   constructor(
-    private activatedRouter: ActivatedRoute,
     private ProjectService: ProjectService,
     private toast: ToastrService,
     private commonService: CommonService
@@ -73,7 +65,7 @@ export class HomeComponent implements OnInit {
         this.onClick();
       },
       (e) => {
-        console.log(e.error.message);
+        this.toast.error(e.error.message);
       }
     );
   }
@@ -92,28 +84,6 @@ export class HomeComponent implements OnInit {
        })
        this.commonService.setProjectId(id);
        
-    // if (id) {
-    //           this.id = id;
-    //           this.projectIdDetail.setValue(id);
-    //           this.ProjectService.getProjectById(this.id).subscribe((data) => {
-    //             this.formProjectDashboard.patchValue({
-    //               name: data.name,
-    //               description: data.description,
-    //               readme: data.readme,
-    //             });
-    //           });
-    //           this.ProjectService.getProject();
-    //           this.ProjectService.Project.subscribe((data) => {
-    //             this.projectAlls = data;
-    //           });
-    //         }
-    //       console.log( 'value',id);
-    //       this.projectIdDetail.setValue(id);
-    //       this.commonService.initProjectId();
-    //       this.commonService.projectId.subscribe((id) => {
-        
-    //       });
-    //       this.formProjectDashboard.disable();
-          
+    
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -16,7 +15,6 @@ export class MemberComponent implements OnInit {
   memberId: any;
   constructor(
     public dialog: MatDialog,
-    private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
     private toast: ToastrService,
     private commonService: CommonService

@@ -50,6 +50,10 @@
 </div>
 <div cdkDropList class="example-list">
   <div class="example-box" *ngFor="let toDoList of toDoLists" cdkDrag>
+    <div>
+      <i class="fa-regular fa-square-check  text-4xl cursor-pointer"[ngClass]="toDoList.status ? 'text-blue-500' :'text-red-500' " (click)="onPut(toDoList._id,toDoList.status)"></i>
+    </div>
+    
     <p>{{ toDoList.title }}</p>
     <p>{{ toDoList.description }}</p>
     <p>{{ toDoList.deadline}}</p>

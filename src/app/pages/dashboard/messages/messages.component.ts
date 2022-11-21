@@ -3,12 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/services/common.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { ModalMessagesComponent } from '../modal-messages/modal-messages.component';
-import io from 'socket.io-client';
 import { Socket } from 'ngx-socket-io';
-import { map } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ChatService } from 'src/app/services/chats.service';
-const SOCKET_ENDPOINT = 'https://dev-connect-rest-api.herokuapp.com/chat';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as moment from 'moment';
 @Component({
@@ -90,15 +87,10 @@ export class MessagesComponent implements OnInit {
     });
   }
   getMessage() {
-    // return this.socket.on('new_message',(data:string)=>{
-    // });
-    // .pipe(map((data: any) => console.log(data.messages)));
+   
     this.socket.fromEvent('new_message').subscribe((data: any) => {
       this.chatService.getAllChatContent(data._id);
-      // data.messages.map((item: any) => {
-      //   this.dateChat = moment(item.date).format('DD/MM hh:mm');
-      //   console.log(this.dateChat);
-      // });
+   
     });
   }
   OpenPopup() {

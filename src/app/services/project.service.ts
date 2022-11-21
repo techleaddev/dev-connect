@@ -137,6 +137,11 @@ export class ProjectService {
       headers: this.headers,
     });
   }
+  todoCheckBox(data:any): Observable<any> {
+    return this.http.put<any>(`${environment.todo}`,data ,{
+      headers: this.headers,
+    });
+  }
     //Chats 
 createGroupChat (data :ChatType):Observable<ChatType>{
   return this.http.post<ChatType>(`${environment.chat}`, data, {
