@@ -30,6 +30,10 @@ export class TodoService {
     return this.http.put<TodoType>(`${environment.todo}`, data);
   }
 
+  updateTodoStatus(data: any): Observable<any> {
+    return this.http.put<TodoType>(`${environment.todo}`, data);
+  }
+
   changeTodo(data: changeTodo): Observable<changeTodo> {
     return this.http.put<changeTodo>(`${environment.todo}/index`, data);
   }

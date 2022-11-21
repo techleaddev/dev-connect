@@ -13,10 +13,9 @@ import * as moment from 'moment';
 })
 export class TodoComponent implements OnInit {
   todo: any[] = [];
-
   todoId: string = '';
-
   number: number = 0;
+  checked = false;
   constructor(
     private dialog: MatDialog,
     private todoService: TodoService,
@@ -49,7 +48,6 @@ export class TodoComponent implements OnInit {
       data.map((item) => {
         item.deadline = moment(item.deadline, 'YYYY/MM/DD').calendar();
         this.todoId = item._id;
-
         this.number = item.number;
       });
       this.todo = data;
@@ -71,6 +69,21 @@ export class TodoComponent implements OnInit {
     }
   }
 
+  onCheckBox(id: string) {
+    const checked = {
+      id: id,
+      status: (this.checked = !this.checked),
+    };
+    this.todoService.updateTodoStatus(checked).subscribe((data) => {
+      if (data.status == true) {
+        this.toast.success('Done');
+        this.todoService.getAllToDo();
+      } else {
+        this.toast.warning('Todo');
+        this.todoService.getAllToDo();
+      }
+    });
+  }
   toggleModal(item?: any) {
     this.dialog.open(ModalTodoComponent, {
       width: '30%',

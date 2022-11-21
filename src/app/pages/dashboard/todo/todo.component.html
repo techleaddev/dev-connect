@@ -33,9 +33,12 @@
                     <div
                         class="rounded shadow bg-white mx-2 w-full border border-solid border-black p-4 flex justify-between">
                         <div class="flex w-[50%]  ">
-                            <input
-                                class="text-indigo-500 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300"
-                                type="checkbox" />
+                            <div>
+                                <span (click)="onCheckBox(item._id)" class="material-symbols-outlined"
+                                    ngClass="{{item.status == true ? 'text-green-600': 'text-red-500'}}">
+                                    {{item.status== true ? 'check_box' : 'check_box_outline_blank'}}
+                                </span>
+                            </div>
                             <div class="grid grid-cols-2 gap-24 ml-10 w-full">
                                 <span class="">{{item.title}}</span>
                                 <span>{{item.description}}</span>
