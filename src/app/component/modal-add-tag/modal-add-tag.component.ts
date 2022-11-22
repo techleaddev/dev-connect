@@ -21,6 +21,7 @@ export class ModalAddTagComponent implements OnInit {
     title: new FormControl('', [Validators.required]),
     projectId: new FormControl('', []),
   });
+  disableButton: boolean = false;
   constructor(
     private tagService: TagService,
     @Inject(MAT_DIALOG_DATA) public data: { pjId: string },
@@ -39,11 +40,13 @@ export class ModalAddTagComponent implements OnInit {
   }
 
   onSubmit() {
+    this.disableButton = true;
     this.tagService.createTag(this.formAddTag.value).subscribe(
       (data) => {
         this.toast.success('Thêm thành công');
         this.tagService.getAllTag(this.data.pjId);
         this.dialogRef.close();
+        this.disableButton = false;
       },
       (e) => {
         this.toast.error(e.error.message);

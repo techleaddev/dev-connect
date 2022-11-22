@@ -25,6 +25,7 @@ export class ModalTodoComponent implements OnInit {
     deadline: new FormControl('', []),
   });
 
+  disableButton: boolean = false;
   constructor(
     private todoService: TodoService,
     private toast: ToastrService,
@@ -46,6 +47,7 @@ export class ModalTodoComponent implements OnInit {
   }
 
   onSubmit() {
+    this.disableButton = true;
     if (!this.data.todo) {
       const convertDate = moment(
         this.formTodo.value.deadline,
@@ -58,18 +60,21 @@ export class ModalTodoComponent implements OnInit {
           this.toast.success('Thêm thành công');
           this.todoService.getAllToDo();
           this.dialogRef.close();
+          this.disableButton = false;
         },
         (e) => {
           this.toast.error(e.error.message);
         }
       );
     } else {
+      this.disableButton = true;
       const dataTodo = { ...this.formTodo.value, id: this.data.todo._id };
       this.todoService.updateTodo(dataTodo).subscribe(
         (data) => {
           this.toast.success('Sửa thành công');
           this.todoService.getAllToDo();
           this.dialogRef.close();
+          this.disableButton = false;
         },
         (e) => {
           this.toast.error(e.error.message);

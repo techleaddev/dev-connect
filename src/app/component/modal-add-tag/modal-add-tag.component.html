@@ -22,7 +22,8 @@
             <app-show-validate [field]="formAddTag.get('title')" key="Tên tag"></app-show-validate>
         </div>
         <input type="hidden" name="" id="" formControlName="projectId">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded">Thêm</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded"
+            [disabled]="disableButton">Thêm</button>
     </form>
 </div>
 <div mat-dialog-actions>

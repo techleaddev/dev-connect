@@ -22,6 +22,7 @@ export class ModalAddMemberComponent implements OnInit {
   });
   pjId: string = '';
   members: any[] = [];
+  disableButton: boolean = false;
   constructor(
     private toast: ToastrService,
     public dialogRef: MatDialogRef<ModalAddMemberComponent>,
@@ -41,11 +42,13 @@ export class ModalAddMemberComponent implements OnInit {
   }
 
   onSubmit() {
+    this.disableButton = true;
     this.memberService.addMember(this.formAddMember.value).subscribe(
       (data) => {
         this.toast.success('Thêm thành công');
         this.memberService.getAllMember(this.data.pjId);
         this.dialogRef.close();
+        this.disableButton = false;
       },
       (e) => {
         this.toast.error(e.error.message);

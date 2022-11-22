@@ -42,6 +42,7 @@ import { NetworkInterceptor } from './network/network.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
 const config: SocketIoConfig = {
   url: apiUrl,
   options: {},

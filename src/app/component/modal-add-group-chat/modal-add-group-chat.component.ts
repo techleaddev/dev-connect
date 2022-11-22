@@ -22,6 +22,8 @@ export class ModalAddGroupChatComponent implements OnInit {
   members: any[] = [];
   pjId: string = '';
   memberId: any = '';
+  disableButton: boolean = false;
+
   formAddGroup: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     projectId: new FormControl(''),
@@ -66,12 +68,14 @@ export class ModalAddGroupChatComponent implements OnInit {
     }
   }
   onSubmit() {
+    this.disableButton = true;
     const newData = this.formAddGroup.value;
     this.chatService.createGroupChat(newData).subscribe(
       (data) => {
         this.toast.success('Tạo mới thành công');
         this.chatService.getAllGroupChat(this.data.pjId);
         this.dialogRef.close();
+        this.disableButton = false;
       },
       (e) => {
         this.toast.error(e.error.message);
