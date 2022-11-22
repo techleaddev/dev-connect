@@ -34,7 +34,7 @@
                         class="rounded shadow bg-white mx-2 w-full border border-solid border-black p-4 flex justify-between">
                         <div class="flex w-[50%]  ">
                             <div>
-                                <span (click)="onCheckBox(item._id)" class="material-symbols-outlined"
+                                <span (click)="onCheckBox(item._id, item.status)" class="material-symbols-outlined"
                                     ngClass="{{item.status == true ? 'text-green-600': 'text-red-500'}}">
                                     {{item.status== true ? 'check_box' : 'check_box_outline_blank'}}
                                 </span>

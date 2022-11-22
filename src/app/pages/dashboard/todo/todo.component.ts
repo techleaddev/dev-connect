@@ -15,7 +15,6 @@ export class TodoComponent implements OnInit {
   todo: any[] = [];
   todoId: string = '';
   number: number = 0;
-  checked = false;
   constructor(
     private dialog: MatDialog,
     private todoService: TodoService,
@@ -69,10 +68,10 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  onCheckBox(id: string) {
+  onCheckBox(id: string, status: boolean) {
     const checked = {
       id: id,
-      status: (this.checked = !this.checked),
+      status: (status = !status),
     };
     this.todoService.updateTodoStatus(checked).subscribe((data) => {
       if (data.status == true) {
