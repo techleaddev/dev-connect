@@ -61,7 +61,8 @@
                 <form (ngSubmit)="onSubmit()" [formGroup]="formMessage" class="flex">
                     <input class="w-full bg-gray-300 py-3 px-3 rounded-xl" type="text" formControlName="text"
                         placeholder=" type your message here..." />
-                    <button type="submit" class="bg-blue-500 py-3 px-3 rounded-xl ml-4 w-[10%]"><i
+                    <button [disabled]="!formMessage.valid" type="submit"
+                        class="bg-blue-500 py-3 px-3 rounded-xl ml-4 w-[10%]"><i
                             class="ni ni-send text-white"></i></button>
                 </form>
             </div>

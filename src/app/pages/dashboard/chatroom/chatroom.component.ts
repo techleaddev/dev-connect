@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from './../../../services/chat.service';
 import { CommonService } from './../../../services/common.service';
 import { ModalAddGroupChatComponent } from './../../../component/modal-add-group-chat/modal-add-group-chat.component';
@@ -14,7 +14,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class ChatroomComponent implements OnInit {
   formMessage: FormGroup = new FormGroup({
-    text: new FormControl(''),
+    text: new FormControl('', Validators.required),
   });
   pjId: string = '';
   groupChat: any = [];
@@ -22,6 +22,7 @@ export class ChatroomComponent implements OnInit {
   conversationId = '';
   userId = '';
   idGroupChat = '';
+  disable = '';
   constructor(
     private dialog: MatDialog,
     private commonService: CommonService,
