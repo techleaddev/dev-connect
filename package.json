@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@auth0/angular-jwt": "^5.1.0",
-    "@ng-select/ng-select": "^10.0.0",
+    "@ng-select/ng-select": "^9.1.0",
     "apexcharts": "^3.36.3",
     "moment": "^2.29.4",
     "ng-angular-popup": "^0.2.0",

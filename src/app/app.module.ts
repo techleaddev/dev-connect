@@ -42,6 +42,8 @@ import { NetworkInterceptor } from './network/network.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 const config: SocketIoConfig = {
   url: apiUrl,
@@ -91,6 +93,8 @@ const config: SocketIoConfig = {
         tokenGetter: () => localStorage.getItem('user'),
       },
     }),
+    NgSelectModule,
+    FormsModule,
   ],
   providers: [
     {

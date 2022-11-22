@@ -10,6 +10,7 @@ import { CommonService } from './../../services/common.service';
 import { MemberService } from './../../services/member.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
+import { NgSelectConfig } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-modal-add-group-chat',
@@ -38,7 +39,8 @@ export class ModalAddGroupChatComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { pjId: string },
     public dialog: MatDialog,
     private chatService: ChatService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private config: NgSelectConfig
   ) {}
 
   ngOnInit(): void {

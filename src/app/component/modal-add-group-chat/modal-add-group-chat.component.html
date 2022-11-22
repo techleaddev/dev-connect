@@ -31,10 +31,13 @@
             </div>
             <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Chat toàn bộ</span>
         </label>
-        <select multiple id="countries_multiple" formControlName="member" *ngIf="hidden"
+        <ng-select [multiple]="true" formControlName="member" *ngIf="hidden" class="mb-6" placeholder="Members">
+            <ng-option *ngFor="let item of members" [value]="item.member_id">{{item.name}}</ng-option>
+        </ng-select>
+        <!-- <select multiple id="countries_multiple" formControlName="member" *ngIf="hidden"
             class="mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option *ngFor="let item of members" value="{{item.member_id}}">{{item.name}}</option>
-        </select>
+        </select> -->
 
         <button type="submit" [disabled]="disableButton" class="
             w-full
