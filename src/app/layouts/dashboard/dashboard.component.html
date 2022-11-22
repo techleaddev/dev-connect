@@ -180,7 +180,7 @@
                             <a routerLink="#"
                                 class="block px-0 py-2 text-sm font-semibold text-black transition-all ease-nav-brand dropbtn">
                                 <i class="fa fa-user sm:mr-1"></i>
-                                <span class="">{{userInfo.first_name}}</span>
+                                <span class="">{{userInfo?.first_name}}</span>
                             </a>
                             <div class="dropdown-content">
                                 <a routerLink="#" (click)="logOut()">LogOut</a>

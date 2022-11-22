@@ -52,7 +52,8 @@
                     <div>
                         <div [ngClass]="item.from._id == userId ? 'rounded-bl-3xl rounded-tl-3xl rounded-tr-xl' : ' rounded-br-3xl rounded-tr-3xl rounded-tl-xl'"
                             class=" py-1 px-4 bg-gray-400 text-white">{{item.text}}</div>
-                        <span class="text-xs ">{{item.from.last_name + ' ' + item.from.first_name}}</span>
+                        <span class="text-xs ">{{item.from.last_name + ' ' + item.from.first_name}} {{item.date | date:
+                            "hh:mm dd/MM"}}</span>
                     </div>
                 </div>
             </div>

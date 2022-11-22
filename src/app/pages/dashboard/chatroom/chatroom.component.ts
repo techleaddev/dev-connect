@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-chatroom',
@@ -22,6 +21,7 @@ export class ChatroomComponent implements OnInit {
   chatContent: any = [];
   conversationId = '';
   userId = '';
+  idGroupChat = '';
   constructor(
     private dialog: MatDialog,
     private commonService: CommonService,
@@ -32,12 +32,21 @@ export class ChatroomComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.initProjectId();
+    this.commonService.initGroupChatId();
     this.socket.fromEvent('new_message').subscribe((data: any) => {
       this.chatService.getChatContent(data._id);
-      console.log(data);
     });
     this.getAllGroupChat();
     this.someMethod();
+
+    this.commonService.groupChatId.subscribe((id) => {
+      this.socket.emit('connect_room', id);
+      this.chatService.getChatContent(id);
+      this.chatService.ChatOb.subscribe((data: any) => {
+        this.chatContent = data.messages;
+        this.conversationId = data._id;
+      });
+    });
   }
 
   getAllGroupChat() {
@@ -56,9 +65,6 @@ export class ChatroomComponent implements OnInit {
     this.chatService.getChatContent(id);
     this.chatService.ChatOb.subscribe((data: any) => {
       this.chatContent = data.messages;
-      data.messages.map((item: any) => {
-        item.date = moment(item.date).calendar();
-      });
       this.conversationId = data._id;
     });
     this.socket.emit('connect_room', id);
@@ -70,6 +76,7 @@ export class ChatroomComponent implements OnInit {
     };
     this.chatService.sendMessage(newData).subscribe((data) => {
       this.chatService.getChatContent(this.conversationId);
+      this.commonService.setGroupChatId(data._id);
     });
     this.formMessage.reset();
   }
