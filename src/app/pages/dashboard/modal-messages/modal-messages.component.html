@@ -42,19 +42,11 @@
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
         >Select an option</label
       >
-      <select
-        multiple
-        id="countries_multiple"
-        formControlName="member"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
-        <option
-          *ngFor="let memberProject of memberProjects"
-          value="{{ memberProject.member_id }}"
-        >
-          {{ memberProject.name }}
-        </option>
-      </select>
+      <ng-select [multiple]="true" placeholder="Member">
+        <ng-option *ngFor="let memberProject of memberProjects" [value]="memberProject.member_id">{{memberProject.name}}</ng-option>
+       
+    </ng-select>
+     
     </div>
     <div mat-dialog-actions>
       <button type="submit" mat-raised-button color="primary" prevent-double-submit>ADD</button>

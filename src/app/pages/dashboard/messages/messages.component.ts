@@ -36,7 +36,6 @@ export class MessagesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.commonService.initProjectId();
     this.commonService.initGroupId();
     this.commonService.projectId.subscribe((id) => {
@@ -57,10 +56,11 @@ export class MessagesComponent implements OnInit {
         this.socket.emit('connect_room', id);
 
         this.chatService.getAllChatContent(id);
-        this.chatService.chatContent.subscribe((data) => {
-          data.messages.map((item: any) => {
-            item.date = moment(item.date).format('DD/MM hh:mm');
-          });
+        this.chatService.chatContent.subscribe((data) => { 
+          // data.messages.map((item: any) => {
+          //   item.date = moment(item.date).format('DD/MM hh:mm');
+          //   console.log('đv',item.date);
+          // });
           this.chatsAllContent = data.messages;
         });
       }

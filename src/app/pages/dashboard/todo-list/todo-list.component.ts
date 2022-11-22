@@ -27,7 +27,6 @@ export class TodoListComponent implements OnInit {
       });
       this.toDoLists = data;
     });
-    console.log(this.toDoLists);
   }
   OpenPopup(item: any) {
     let dialogRef = this.dialog.open(ModalTodoComponent, {
@@ -55,23 +54,22 @@ export class TodoListComponent implements OnInit {
       const dataTodo = { id: id, status: false };
       this.projectService.todoCheckBox(dataTodo).subscribe(
         (data) => {
-          console.log(data); 
            this.projectService.getToDo();
         },
         (e) => {
-          console.log(e);
+          this.toast.error(e.error.messages);
+         
         }
       );
-    
     } else if (status == false) {
       const dataTodo = { id: id, status: true };
       this.projectService.todoCheckBox(dataTodo).subscribe(
         (data) => { 
           this.projectService.getToDo();
-          console.log(data);
         },
         (e) => {
-          console.log(e);
+          this.toast.error(e.error.messages);
+         
         }
       );
     }

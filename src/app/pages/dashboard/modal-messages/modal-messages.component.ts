@@ -29,7 +29,6 @@ export class ModalMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.commonService.initProjectId();
     this.commonService.projectId.subscribe((id) => {
       this.formChats.patchValue({ projectId: id });

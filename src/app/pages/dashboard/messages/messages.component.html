@@ -99,7 +99,7 @@
                   : ' rounded-br-3xl rounded-tr-3xl rounded-tl-xl'
               " class=" py-1 px-4 bg-blue-400 text-white m-0"> {{ item.text }}</div>
                <span class="text-[10px] ">{{item.from.first_name + ' ' + item.from.last_name}}</span>
-               <span class="text-[10px] ">{{item.date}}</span>
+               <span class="text-[10px] ml-3">{{item.date | date : 'dd/MM hh:mm a'}}</span>
             </div>
            
           </div>
