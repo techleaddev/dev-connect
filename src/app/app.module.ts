@@ -34,6 +34,9 @@ import { NetworkInterceptor } from './network/network.interceptor';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { JwtModule } from "@auth0/angular-jwt";
 const config: SocketIoConfig = { url: 'https://dev-connect-rest-api.herokuapp.com', options: {} };
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { PreventDoubleSubmitModule } from 'ngx-prevent-double-submission';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +78,10 @@ const config: SocketIoConfig = { url: 'https://dev-connect-rest-api.herokuapp.co
       config: {
         tokenGetter:  () => localStorage.getItem('token')
       }
-    })
+    }),
+    NgSelectModule,
+    FormsModule,
+    PreventDoubleSubmitModule.forRoot()
   ],
   providers: [
     {
