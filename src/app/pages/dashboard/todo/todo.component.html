@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="flex justify-end">
-                            <span class="mr-10">{{item.deadline}}</span>
+                            <span class="mr-10">{{item.deadline | date: "dd/MM/YYYY"}}</span>
                             <button (click)="toggleModal(item)" class="mr-5"><i class="ni ni-ruler-pencil"></i></button>
                             <button (click)="onDelete(item._id)"><i class="ni ni-fat-remove"></i></button>
                         </div>

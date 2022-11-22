@@ -45,7 +45,6 @@ export class TodoComponent implements OnInit {
     this.todoService.getAllToDo();
     this.todoService.todoOb.subscribe((data) => {
       data.map((item) => {
-        item.deadline = moment(item.deadline, 'YYYY/MM/DD').calendar();
         this.todoId = item._id;
         this.number = item.number;
       });
