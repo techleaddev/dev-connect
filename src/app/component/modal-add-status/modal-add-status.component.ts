@@ -27,8 +27,6 @@ export class ModalAddStatusComponent implements OnInit {
       color: ['', Validators.required],
     }),
   });
-
-  disableButton: boolean = false;
   constructor(
     private toast: ToastrService,
     public dialogRef: MatDialogRef<ModalAddStatusComponent>,
@@ -47,13 +45,11 @@ export class ModalAddStatusComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.disableButton = true;
     this.statusService.createStatus(this.formAddStatus.value).subscribe(
       (data) => {
         this.toast.success('Thêm thành công');
         this.statusService.getAllStatus(this.data.pjId);
         this.dialogRef.close();
-        this.disableButton = false;
       },
       (e) => {
         this.toast.error(e.error.message);

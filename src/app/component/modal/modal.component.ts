@@ -12,7 +12,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalComponent implements OnInit {
   formProject: FormGroup;
-  disableButton: boolean = false;
   constructor(
     private projectService: ProjectService,
     private toast: ToastrService,
@@ -28,13 +27,11 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.disableButton = true;
     this.projectService.createProject(this.formProject.value).subscribe(
       (data) => {
         this.toast.success('Thêm thành công');
         this.projectService.getAllProject();
         this.dialogRef.close();
-        this.disableButton = false;
       },
       (e) => {
         this.toast.error(e.error.message);

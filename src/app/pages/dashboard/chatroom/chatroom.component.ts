@@ -76,7 +76,6 @@ export class ChatroomComponent implements OnInit {
       conversationId: this.conversationId,
     };
     this.chatService.sendMessage(newData).subscribe((data) => {
-      this.chatService.getChatContent(this.conversationId);
       this.commonService.setGroupChatId(data._id);
     });
     this.formMessage.reset();

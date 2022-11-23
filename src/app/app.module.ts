@@ -44,6 +44,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { PreventDoubleSubmitModule } from 'ngx-prevent-double-submission';
 
 const config: SocketIoConfig = {
   url: apiUrl,
@@ -95,6 +96,7 @@ const config: SocketIoConfig = {
     }),
     NgSelectModule,
     FormsModule,
+    PreventDoubleSubmitModule.forRoot(),
   ],
   providers: [
     {

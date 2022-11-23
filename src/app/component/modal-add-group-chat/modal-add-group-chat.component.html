@@ -39,7 +39,7 @@
             <option *ngFor="let item of members" value="{{item.member_id}}">{{item.name}}</option>
         </select> -->
 
-        <button type="submit" [disabled]="!formAddGroup.valid || disableButton" class="
+        <button type="submit" [disabled]="!formAddGroup.valid" prevent-double-submit class="
             w-full
             px-6
             py-2.5

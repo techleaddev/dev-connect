@@ -48,7 +48,8 @@
                 <div class="flex mb-4"
                     [ngClass]="item.from._id === userId ? 'justify-end, flex-row-reverse' : 'justify-start' "
                     *ngFor="let item of chatContent">
-                    <img src="https://i.pravatar.cc/" class="object-cover h-8 w-8 rounded-full ml-2 mr-2" alt="" />
+                    <img src="https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/09/avatar-hai-1.jpg?ssl=1"
+                        class="object-cover h-8 w-8 rounded-full ml-2 mr-2" alt="" />
                     <div>
                         <div [ngClass]="item.from._id == userId ? 'rounded-bl-3xl rounded-tl-3xl rounded-tr-xl' : ' rounded-br-3xl rounded-tr-3xl rounded-tl-xl'"
                             class=" py-1 px-4 bg-gray-400 text-white">{{item.text}}</div>
@@ -61,7 +62,7 @@
                 <form (ngSubmit)="onSubmit()" [formGroup]="formMessage" class="flex">
                     <input class="w-full bg-gray-300 py-3 px-3 rounded-xl" type="text" formControlName="text"
                         placeholder=" type your message here..." />
-                    <button [disabled]="!formMessage.valid" type="submit"
+                    <button [disabled]="!formMessage.valid" prevent-double-submit type="submit"
                         class="bg-blue-500 py-3 px-3 rounded-xl ml-4 w-[10%]"><i
                             class="ni ni-send text-white"></i></button>
                 </form>
