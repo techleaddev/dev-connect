@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/app/services/project.service';
@@ -11,9 +11,9 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ModalStatusComponent implements OnInit {
   addStatusForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    color: new FormControl(''),
-    description: new FormControl(''),
+    name: new FormControl('',Validators.required),
+    color: new FormControl('',Validators.required),
+    description: new FormControl('',Validators.required),
   });
   id = '';
   constructor(

@@ -35,7 +35,7 @@
                 class="fas fa-bars pr-2 text-white"
                 onclick="sidebarToggle()"
               ></i>
-              <h1 class="text-white p-2">Logo</h1>
+             <a routerLink="/welcome"><h1 class="text-white p-2" >Logo</h1></a> 
             </div>
           
           </div>
@@ -53,17 +53,20 @@
               <li
                 class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
               >
-                <p
+                <a
                   (click)="onClick()"
+                  routerLink="common"
+                  routerLinkActive="active"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline cursor-pointer"
                 >
                   <i class="fas fa-tachometer-alt float-left mx-2"></i>
                   Dashboard
-                </p>
+                </a>
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
                   routerLink="todo"
+                  routerLinkActive="active"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                 >
                   <i class="fa-solid fa-list-ul float-left mx-2"></i>
@@ -73,6 +76,7 @@
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
                   routerLink="chats"
+                  routerLinkActive="active"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                 >
                   <i class="fa-solid fa-comments float-left mx-2"></i>

@@ -21,11 +21,9 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.projectService.getToDo();
     this.projectService.todo.subscribe((data) => {
-      data.map((item: any) => {
-        item.deadline = moment(item.deadline, 'YYYY/MM/DD').calendar();
-        this.idEdit = item._id;
-      });
-      this.toDoLists = data;
+
+    this.toDoLists  = data;
+      
     });
   }
   OpenPopup(item: any) {

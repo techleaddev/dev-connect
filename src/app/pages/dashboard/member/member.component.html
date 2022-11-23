@@ -11,13 +11,15 @@
         Add Member
       </button>
     </div>
-    <div *ngFor="let member of member" class="pl-5 flex justify-between items-center">
+    <div
+      *ngFor="let member of member"
+      class="pl-5 flex justify-between items-center"
+    >
       <div class="mt-5">
         <p>{{ member.name }}</p>
       </div>
       <div class="mx-5">
-        <button mat-raised-button
-        color="warn" (click)="onRemove()">Xóa</button>
+        <button mat-raised-button color="warn" (click)="onRemove()">Xóa</button>
       </div>
     </div>
   </div>

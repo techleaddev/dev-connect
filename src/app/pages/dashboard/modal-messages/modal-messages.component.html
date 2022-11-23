@@ -42,14 +42,24 @@
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
         >Select an option</label
       >
-      <ng-select [multiple]="true" placeholder="Member">
-        <ng-option *ngFor="let memberProject of memberProjects" [value]="memberProject.member_id">{{memberProject.name}}</ng-option>
-       
-    </ng-select>
-     
+      <ng-select [multiple]="true" placeholder="Member"    formControlName="member">
+        <ng-option
+          *ngFor="let memberProject of memberProjects"
+          [value]="memberProject.member_id"
+          >{{ memberProject.name }}</ng-option
+        >
+      </ng-select>
     </div>
     <div mat-dialog-actions>
-      <button type="submit" mat-raised-button color="primary" prevent-double-submit>ADD</button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        prevent-double-submit
+        [disabled]="!formChats.valid"
+      >
+        ADD
+      </button>
       <button mat-raised-button color="warn" mat-dialog-close>Đóng</button>
     </div>
   </form>

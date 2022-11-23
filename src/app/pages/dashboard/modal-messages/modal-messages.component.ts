@@ -15,7 +15,7 @@ export class ModalMessagesComponent implements OnInit {
   formChats: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     all: new FormControl(false),
-    member: new FormControl(''),
+    member: new FormControl([]),
     projectId: new FormControl('', Validators.required),
   });
   memberProjects: any = [];

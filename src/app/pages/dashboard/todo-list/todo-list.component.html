@@ -59,7 +59,7 @@
     
     <p>{{ toDoList.title }}</p>
     <p>{{ toDoList.description }}</p>
-    <p>{{ toDoList.deadline}}</p>
+    <p>{{ toDoList.deadline | date:'dd/MM/YYYY'}}</p>
     <div class="grid grid-cols-2 gap-2">
       <button type="submit" mat-raised-button color="primary" (click)="OpenPopup(toDoList)">sửa</button>
       <button type="submit" mat-raised-button color="warn" (click)="onRemove(toDoList._id)">
