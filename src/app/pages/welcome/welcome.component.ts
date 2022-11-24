@@ -23,7 +23,7 @@ export class WelcomeComponent implements OnInit {
     private getProjects: ProjectService,
     private toast: ToastrService,
     private router: Router,
-    private commonService: CommonService,
+    private commonService: CommonService
   ) {
     this.Project = [];
     this.nameProject = [];
@@ -33,9 +33,9 @@ export class WelcomeComponent implements OnInit {
     this.getProjects.getProject();
     this.getProjects.Project.subscribe((data) => {
       localStorage.setItem('prjId', JSON.stringify(data));
+
+      data.map((o: any) => o.originator.name);
       this.Project = data;
-      const a = data.map((o: any) => o.originator.name);
-      this.nameProject = a[0];
     });
   }
   OpenPopup() {

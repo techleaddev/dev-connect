@@ -15,7 +15,7 @@ export class ModalMessagesComponent implements OnInit {
   formChats: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     all: new FormControl(false),
-    member: new FormControl(''),
+    member: new FormControl([]),
     projectId: new FormControl('', Validators.required),
   });
   memberProjects: any = [];
@@ -29,16 +29,16 @@ export class ModalMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.commonService.initProjectId();
     this.commonService.projectId.subscribe((id) => {
       this.formChats.patchValue({ projectId: id });
       if (id) {
-        console.log(id);
+       this.id = id
         this.projectService.GetMember(id);
         this.projectService.member.subscribe((data) => {
           this.memberProjects = data;
         });
+        this.projectService.getAllChat(id);
       }
     });
   }
@@ -48,18 +48,20 @@ export class ModalMessagesComponent implements OnInit {
       (data) => {
         this.toast.success('thanh cong');
         this.dialog.closeAll();
+        this.projectService.getAllChat(this.id);
       },
       (e) => {
-        console.log(e);
+        this.toast.error(e.error.message);
+        this.dialog.closeAll();
         
       }
     );
   }
-  // onChange(e:any){
-  //     if(e.target.checked){
-  //       this.check= false;
-  //     }else{
-  //       this.check= true;
-  //     }
-  // }
+  onChange(e:any){
+      if(e.target.checked){
+        this.check= false;
+      }else{
+        this.check= true;
+      }
+  }
 }

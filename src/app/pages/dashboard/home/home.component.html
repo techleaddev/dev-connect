@@ -1,9 +1,9 @@
-<h4>Basic mat-select</h4>
+
+
 <mat-form-field appearance="fill">
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let food of foods" [value]="food.value">
-      {{food.viewValue}}
+  <mat-select  [formControl]="projectIdDetail">
+    <mat-option *ngFor="let project of projectAlls" value="{{project._id}}" (click)="onChange(project._id)">
+      {{project.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>

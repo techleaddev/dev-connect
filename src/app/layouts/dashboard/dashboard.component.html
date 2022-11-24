@@ -9,13 +9,16 @@
       content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example"
     />
     <!-- Css -->
-    <link rel="stylesheet" href="/assets/dashboardLayout/dist/styles.css" />
-    <link rel="stylesheet" href="/assets/dashboardLayout/dist/all.css" />
+    <!-- <link rel="stylesheet" href="/assets/dashboardLayout/dist/styles.css" />
+    <link rel="stylesheet" href="/assets/dashboardLayout/dist/all.css" /> -->
     <link
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
     <title>Dashboard | Tailwind Admin</title>
   </head>
 
@@ -25,66 +28,19 @@
       <!--Screen-->
       <div class="min-h-screen flex flex-col">
         <!--Header Section Starts Here-->
-        <header class="bg-nav">
+        <header class="bg-slate-500">
           <div class="flex justify-between">
             <div class="p-1 mx-3 inline-flex items-center">
               <i
                 class="fas fa-bars pr-2 text-white"
                 onclick="sidebarToggle()"
               ></i>
-              <h1 class="text-white p-2">Logo</h1>
+             <a routerLink="/welcome"><h1 class="text-white p-2" >Logo</h1></a> 
             </div>
-            <div class="p-1 flex flex-row items-center">
-              <a
-                href="https://github.com/tailwindadmin/admin"
-                class="text-white p-2 mr-2 no-underline hidden md:block lg:block"
-                >Github</a
-              >
-
-              <img
-                onclick="profileToggle()"
-                class="inline-block h-8 w-8 rounded-full"
-                src="https://avatars0.githubusercontent.com/u/4323180?s=460&v=4"
-                alt=""
-              />
-              <a
-                href="#"
-                onclick="profileToggle()"
-                class="text-white p-2 no-underline hidden md:block lg:block"
-                >Adam Wathan</a
-              >
-              <div
-                id="ProfileDropDown"
-                class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r"
-              >
-                <ul class="list-reset">
-                  <li>
-                    <a
-                      href="#"
-                      class="no-underline px-4 py-2 block text-black hover:bg-grey-light"
-                      >My account</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="no-underline px-4 py-2 block text-black hover:bg-grey-light"
-                      >Notifications</a
-                    >
-                  </li>
-                  <li><hr class="border-t mx-2 border-grey-ligght" /></li>
-                  <li>
-                    <a
-                      href="#"
-                      class="no-underline px-4 py-2 block text-black hover:bg-grey-light"
-                      >Logout</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
+          
           </div>
         </header>
+
         <!--/Header-->
 
         <div class="flex flex-1">
@@ -97,100 +53,35 @@
               <li
                 class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
               >
-                <p
-               (click)="onClick() "
+                <a
+                  (click)="onClick()"
+                  routerLink="common"
+                  routerLinkActive="active"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline cursor-pointer"
                 >
                   <i class="fas fa-tachometer-alt float-left mx-2"></i>
                   Dashboard
-                </p>
+                </a>
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
                   routerLink="todo"
+                  routerLinkActive="active"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                 >
-                <i class="fa-solid fa-list-ul float-left mx-2"></i>
+                  <i class="fa-solid fa-list-ul float-left mx-2"></i>
                   Todo
                 </a>
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
-                 routerLink="chats"
+                  routerLink="chats"
+                  routerLinkActive="active"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                 >
-                <i class="fa-solid fa-comments float-left mx-2"></i>
+                  <i class="fa-solid fa-comments float-left mx-2"></i>
                   Chats
                 </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                <a
-                  href="tables.html"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fas fa-table float-left mx-2"></i>
-                  Tables
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                <a
-                  href="ui.html"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fab fa-uikit float-left mx-2"></i>
-                  Ui components
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-300-border">
-                <a
-                  href="modals.html"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fas fa-square-full float-left mx-2"></i>
-                  Modals
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2">
-                <a
-                  href="#"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="far fa-file float-left mx-2"></i>
-                  Pages
-                </a>
-                <ul class="list-reset -mx-2 bg-white-medium-dark">
-                  <li
-                    class="border-t mt-2 border-light-border w-full h-full px-2 py-3"
-                  >
-                    <a
-                      href="login.html"
-                      class="mx-4 font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                    >
-                      Login Page
-                    </a>
-                  </li>
-                  <li
-                    class="border-t border-light-border w-full h-full px-2 py-3"
-                  >
-                    <a
-                      href="register.html"
-                      class="mx-4 font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                    >
-                      Register Page
-                    </a>
-                  </li>
-                  <li
-                    class="border-t border-light-border w-full h-full px-2 py-3"
-                  >
-                    <a
-                      href="404.html"
-                      class="mx-4 font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                    >
-                      404 Page
-                      <span><i class="fa fa-angle-right float-right"></i></span>
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
           </aside>
@@ -212,6 +103,6 @@
         <!--/footer-->
       </div>
     </div>
-    <script src="/assets/dashboardLayout/main.js"></script>
+   
   </body>
 </html>

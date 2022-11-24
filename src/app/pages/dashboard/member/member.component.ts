@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -16,7 +15,6 @@ export class MemberComponent implements OnInit {
   memberId: any;
   constructor(
     public dialog: MatDialog,
-    private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
     private toast: ToastrService,
     private commonService: CommonService
@@ -25,6 +23,7 @@ export class MemberComponent implements OnInit {
   ngOnInit(): void {
     this.commonService.projectId.subscribe((id) => {
       if (id) {
+        this.id=id;
         this.projectService.GetMember(id);
         this.projectService.member.subscribe((data) => {
           this.member = data;
@@ -36,11 +35,11 @@ export class MemberComponent implements OnInit {
     });
   }
   OpenPopup() {
-    this.id = this.activatedRouter.snapshot.params['id'];
+ 
     let dialogRef = this.dialog.open(ModalMemberComponent, {
       width: '50%',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
+      // enterAnimationDuration: '1000ms',
+      // exitAnimationDuration: '1000ms',
       data: { id: this.id },
     });
   }

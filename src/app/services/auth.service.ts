@@ -14,10 +14,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  signup(data: TypeSignup): Observable<TypeSignupResponse> {
+  signup(data:TypeSignup): Observable<TypeSignupResponse> {
     return this.http.post<TypeSignupResponse>(`${environment.signup}`, data);
   }
   login(data: TypeLogin): Observable<TypeLoginResponse> {
     return this.http.post<TypeLoginResponse>(`${environment.login}`, data);
   }
+
 }

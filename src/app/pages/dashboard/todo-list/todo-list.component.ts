@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { ModalTodoComponent } from '../modal-todo/modal-todo.component';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -16,20 +14,16 @@ export class TodoListComponent implements OnInit {
   idEdit = '';
   constructor(
     public dialog: MatDialog,
-    private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
     private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
-    0;
     this.projectService.getToDo();
     this.projectService.todo.subscribe((data) => {
-      data.map((item: any) => {
-        item.deadline = moment(item.deadline, 'YYYY/MM/DD').calendar();
-        this.idEdit = item._id;
-      });
-      this.toDoLists = data;
+
+    this.toDoLists  = data;
+      
     });
   }
   OpenPopup(item: any) {
@@ -53,5 +47,30 @@ export class TodoListComponent implements OnInit {
       );
     }
   }
-
+  onPut(id: string, status: boolean) {
+    if (status == true) {
+      const dataTodo = { id: id, status: false };
+      this.projectService.todoCheckBox(dataTodo).subscribe(
+        (data) => {
+           this.projectService.getToDo();
+        },
+        (e) => {
+          this.toast.error(e.error.messages);
+         
+        }
+      );
+    } else if (status == false) {
+      const dataTodo = { id: id, status: true };
+      this.projectService.todoCheckBox(dataTodo).subscribe(
+        (data) => { 
+          this.projectService.getToDo();
+        },
+        (e) => {
+          this.toast.error(e.error.messages);
+         
+        }
+      );
+    }
+   
+  }
 }

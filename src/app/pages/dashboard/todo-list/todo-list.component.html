@@ -48,14 +48,21 @@
     </button>
   </div>
 </div>
+<!-- [ngClass]="toDoList.status ? 'text-blue-500' :'text-red-500' "  -->
 <div cdkDropList class="example-list">
-  <div class="example-box" *ngFor="let toDoList of toDoLists" cdkDrag>
+  <div class="example-box" *ngFor="let toDoList of toDoLists" cdkDrag >
+    <div>
+      <i class="fa-regular fa-square-check text-4xl cursor-pointer" [ngClass]="{'text-blue-500': toDoList.status ==true, 'text-red-500': toDoList.status ==false}"(click)="onPut(toDoList._id,toDoList.status)"></i>
+      <!-- <i class="fa-regular fa-square-check text-4xl cursor-pointer"(click)="onPut(toDoList._id,toDoList.status)" *ngIf="toDoList.status ==true "></i>
+      <i class="fa-light fa-xmark-large" *ngIf="toDoList.status ==false " (click)="onPut(toDoList._id,toDoList.status)"></i> -->
+    </div>
+    
     <p>{{ toDoList.title }}</p>
     <p>{{ toDoList.description }}</p>
-    <p>{{ toDoList.deadline}}</p>
-    <div class="flex">
+    <p>{{ toDoList.deadline | date:'dd/MM/YYYY'}}</p>
+    <div class="grid grid-cols-2 gap-2">
       <button type="submit" mat-raised-button color="primary" (click)="OpenPopup(toDoList)">sửa</button>
-      <button class="ml-5" type="submit" mat-raised-button color="warn" (click)="onRemove(toDoList._id)">
+      <button type="submit" mat-raised-button color="warn" (click)="onRemove(toDoList._id)">
         Xóa
       </button>
     </div>

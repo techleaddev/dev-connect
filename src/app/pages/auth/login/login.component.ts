@@ -9,17 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm: FormGroup = new FormGroup({
+       email: new FormControl('', [Validators.email, Validators.required]),
+       password: new FormControl('', Validators.required),
+  });
   
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
     private router: Router
   ) {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.required),
-    });
+   
   }
 
   ngOnInit(): void {}
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(data));
         this.toastr.success('Bạn đã đăng nhập thành công');
         this.router.navigateByUrl('/welcome');
-      
       },
       (e) => {
         const message = e.error.message;

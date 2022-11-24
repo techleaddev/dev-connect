@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { ModalStatusComponent } from '../modal-status/modal-status.component';
@@ -16,9 +14,7 @@ export class StatusComponent implements OnInit {
   status: any = [];
   constructor(
     public dialog: MatDialog,
-    private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
-    private toast: ToastrService,
     private commonService: CommonService
   ) {}
 

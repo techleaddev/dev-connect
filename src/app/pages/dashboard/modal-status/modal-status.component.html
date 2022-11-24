@@ -24,7 +24,7 @@
     </div>
 
     <div mat-dialog-actions>
-      <button type="submit" mat-raised-button color="primary">add</button>
+      <button type="submit" mat-raised-button color="primary" prevent-double-submit [disabled]="!addStatusForm.valid">add</button>
       <button mat-raised-button color="warn" mat-dialog-close>Đóng</button>
     </div>
   </form>

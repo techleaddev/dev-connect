@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjectService } from 'src/app/services/project.service';
@@ -11,6 +10,7 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./modal-member.component.scss'],
 })
 export class ModalMemberComponent implements OnInit {
+  check = 0;
   AddmemberForm: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required),
     projectId: new FormControl(''),
@@ -18,7 +18,6 @@ export class ModalMemberComponent implements OnInit {
   member: any = [];
   id: string;
   constructor(
-    private activatedRouter: ActivatedRoute,
     private ProjectService: ProjectService,
     @Inject(MAT_DIALOG_DATA) public data: { id: string },
     private toast: ToastrService,
@@ -39,15 +38,19 @@ export class ModalMemberComponent implements OnInit {
   }
 
   onSubmit() {
+    this.check=1; 
     this.ProjectService.AddMember(this.AddmemberForm.value).subscribe(
       (data) => {
         this.toast.success('thanh cong!');
         this.dialog.closeAll();
         this.ProjectService.getProject();
         this.ProjectService.GetMember(this.data.id);
+        this.check=0;
+        // this.AddmemberForm.controls['email'].reset();
       },
       (e) => {
         const err = e.error.message;
+        
         this.toast.error(err);
       }
     );
