@@ -29,7 +29,6 @@ export class ModalAddMemberComponent implements OnInit {
     private projectService: ProjectService,
     @Inject(MAT_DIALOG_DATA) public data: { pjId: string },
     public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
   projectId = new ReplaySubject<string>(1);
+  groupChatId = new ReplaySubject<string>(1);
   private loading = new BehaviorSubject<boolean>(false);
   public readonly loading$ = this.loading.asObservable();
 
@@ -25,5 +26,15 @@ export class CommonService {
 
   hide() {
     this.loading.next(false);
+  }
+
+  setGroupChatId(id: string) {
+    localStorage.setItem('idGroupChat', id);
+    this.groupChatId.next(id);
+  }
+
+  initGroupChatId(): void {
+    const groupChatId = localStorage.getItem('idGroupChat');
+    this.groupChatId.next(groupChatId || '');
   }
 }

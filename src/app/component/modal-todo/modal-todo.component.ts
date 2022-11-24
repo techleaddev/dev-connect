@@ -24,7 +24,6 @@ export class ModalTodoComponent implements OnInit {
     status: new FormControl('', []),
     deadline: new FormControl('', []),
   });
-
   constructor(
     private todoService: TodoService,
     private toast: ToastrService,

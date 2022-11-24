@@ -12,7 +12,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalComponent implements OnInit {
   formProject: FormGroup;
-
   constructor(
     private projectService: ProjectService,
     private toast: ToastrService,

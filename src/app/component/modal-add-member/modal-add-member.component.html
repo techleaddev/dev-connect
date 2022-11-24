@@ -22,7 +22,8 @@
             <app-show-validate [field]="formAddMember.get('email')" key="Email"></app-show-validate>
         </div>
         <input type="hidden" name="" id="" formControlName="projectId">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded">Thêm</button>
+        <button prevent-double-submit class="bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded"
+            [disabled]="!formAddMember.valid">Thêm</button>
     </form>
 </div>
 <div mat-dialog-actions>

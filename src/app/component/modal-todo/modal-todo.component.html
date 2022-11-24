@@ -59,7 +59,7 @@
                 hạn</label>
             <input type="date" class="w-[50%] border border-solid border-gray-600 p-2" formControlName="deadline">
         </div>
-        <button type="submit" [disabled]="!formTodo.valid" class=" 
+        <button type="submit" prevent-double-submit [disabled]="!formTodo.valid" class=" 
             w-full
             px-6
             py-2.5

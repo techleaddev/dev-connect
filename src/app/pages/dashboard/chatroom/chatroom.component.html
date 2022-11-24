@@ -23,8 +23,9 @@
             </div>
             <!-- end search compt -->
             <!-- user list -->
-            <div *ngFor="let item of groupChat"
-                class="flex flex-row py-4 px-2 items-center border-b-2 border-l-4 active:border-blue-400 cursor-pointer ">
+            <div (click)="onClickMessage(item.id)" *ngFor="let item of groupChat"
+                [ngClass]="item.id==conversationId ? 'border-blue-600': ''"
+                class="flex flex-row py-4 px-2 items-center border-b-2 border-l-4 cursor-pointer ">
                 <div class="w-1/4">
                     <img src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
                         class="object-cover h-12 w-12 rounded-full" alt="" />
@@ -42,26 +43,29 @@
         </div>
         <!-- end chat list -->
         <!-- message -->
-        <div class="w-full px-5 flex flex-col justify-between">
-            <div class="flex flex-col mt-5">
-                <div class="flex justify-end mb-4">
-                    <div class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-                        Welcome to group everyone !
-                    </div>
-                    <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full"
-                        alt="" />
-                </div>
-                <div class="flex justify-start mb-4">
-                    <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full"
-                        alt="" />
-                    <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-                        hehe
+        <div class="w-full px-5 flex flex-col justify-between ">
+            <div class="flex  mt-5 flex-col-reverse overflow-x-auto h-[500px] bar">
+                <div class="flex mb-4"
+                    [ngClass]="item.from._id === userId ? 'justify-end, flex-row-reverse' : 'justify-start' "
+                    *ngFor="let item of chatContent">
+                    <img src="https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/09/avatar-hai-1.jpg?ssl=1"
+                        class="object-cover h-8 w-8 rounded-full ml-2 mr-2" alt="" />
+                    <div>
+                        <div [ngClass]="item.from._id == userId ? 'rounded-bl-3xl rounded-tl-3xl rounded-tr-xl' : ' rounded-br-3xl rounded-tr-3xl rounded-tl-xl'"
+                            class=" py-1 px-4 bg-gray-400 text-white">{{item.text}}</div>
+                        <span class="text-xs ">{{item.from.last_name + ' ' + item.from.first_name}} {{item.date | date:
+                            "hh:mm dd/MM"}}</span>
                     </div>
                 </div>
             </div>
             <div class="py-5">
-                <input class="w-full bg-gray-300 py-5 px-3 rounded-xl" type="text"
-                    placeholder="type your message here..." />
+                <form (ngSubmit)="onSubmit()" [formGroup]="formMessage" class="flex">
+                    <input class="w-full bg-gray-300 py-3 px-3 rounded-xl" type="text" formControlName="text"
+                        placeholder=" type your message here..." />
+                    <button [disabled]="!formMessage.valid" prevent-double-submit type="submit"
+                        class="bg-blue-500 py-3 px-3 rounded-xl ml-4 w-[10%]"><i
+                            class="ni ni-send text-white"></i></button>
+                </form>
             </div>
         </div>
         <!-- end message -->

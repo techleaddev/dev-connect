@@ -242,6 +242,13 @@
   resolved "https://registry.npmjs.org/@assemblyscript/loader/-/loader-0.10.1.tgz"
   integrity sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==
 
+"@auth0/angular-jwt@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@auth0/angular-jwt/-/angular-jwt-5.1.0.tgz"
+  integrity sha512-EAQoNKPQSZYphcX6FnY2e7xQpD4ZdHQ1DbHq/m+G1U1qA60m3XnhdjPPfu+blVHARlxEbRzWXc48UOVrnMsrZw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.18.6.tgz"
@@ -1348,6 +1355,13 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@ng-select/ng-select@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.npmjs.org/@ng-select/ng-select/-/ng-select-9.1.0.tgz"
+  integrity sha512-vxSRD2d84H39eqtTJaethlpQ+xkJUU8epQNUr3yPiah23z8MBCqSDE1t0chxi+rXJz7+xoC9qFa1aYnUVFan4w==
+  dependencies:
+    tslib "^2.3.1"
+
 "@ngtools/webpack@14.2.7":
   version "14.2.7"
   resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-14.2.7.tgz"
@@ -2438,6 +2452,11 @@ core-js-compat@^3.21.0, core-js-compat@^3.22.1:
   dependencies:
     browserslist "^4.21.4"
 
+core-js@^3.0.0:
+  version "3.26.1"
+  resolved "https://registry.npmjs.org/core-js/-/core-js-3.26.1.tgz"
+  integrity sha512-21491RRQVzUn0GGM9Z1Jrpr6PNPxPi+Za8OM9q4tksTSnlbXXGKK1nXNg/QvwFYettXvSX6zWKCtHHfjN4puyA==
+
 core-util-is@~1.0.0:
   version "1.0.3"
   resolved "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz"
@@ -2741,6 +2760,17 @@ encoding@^0.1.13:
   integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
   dependencies:
     iconv-lite "^0.6.2"
+
+engine.io-client@~6.2.3:
+  version "6.2.3"
+  resolved "https://registry.npmjs.org/engine.io-client/-/engine.io-client-6.2.3.tgz"
+  integrity sha512-aXPtgF1JS3RuuKcpSrBtimSjYvrbhKW9froICH4s0F3XQWLxsKNxqzG39nnvQZQnva4CMvUK63T7shevxRyYHw==
+  dependencies:
+    "@socket.io/component-emitter" "~3.1.0"
+    debug "~4.3.1"
+    engine.io-parser "~5.0.3"
+    ws "~8.2.3"
+    xmlhttprequest-ssl "~2.0.0"
 
 engine.io-parser@~5.0.3:
   version "5.0.4"
@@ -4322,6 +4352,23 @@ ng-apexcharts@^1.7.4:
   dependencies:
     tslib "^2.0.0"
 
+ngx-prevent-double-submission@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-prevent-double-submission/-/ngx-prevent-double-submission-0.1.0.tgz#bed2f81e8af100e37a7c50e92ac0e151ac8234b2"
+  integrity sha512-zRsJC5Acxezkv3jXFr8XQIXiTmCQBrZRPB09err/AusnBoNXKdLf0f62GyDH2+HPmKnFT+nnz16uCaKF2eO+xg==
+
+ngx-socket-io@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/ngx-socket-io/-/ngx-socket-io-4.3.1.tgz"
+  integrity sha512-ZIvFHz9vRQyR0azrSfEpaXTL3M2xiYhL/DjD0f7cFMKftEmuLCBAa8Zd8uA6Zb/vLBZ0RvnbmSKHX3Ir4eRdfA==
+  dependencies:
+    core-js "^3.0.0"
+    reflect-metadata "^0.1.10"
+    socket.io "^4.5.1"
+    socket.io-client "^4.5.1"
+    tslib "^2.0.0"
+    zone.js "~0.11.4"
+
 ngx-toastr@^15.2.1:
   version "15.2.1"
   resolved "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-15.2.1.tgz"
@@ -5263,7 +5310,7 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-reflect-metadata@^0.1.2:
+reflect-metadata@^0.1.10, reflect-metadata@^0.1.2:
   version "0.1.13"
   resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
   integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
@@ -5633,6 +5680,16 @@ socket.io-adapter@~2.4.0:
   resolved "https://registry.npmjs.org/socket.io-adapter/-/socket.io-adapter-2.4.0.tgz"
   integrity sha512-W4N+o69rkMEGVuk2D/cvca3uYsvGlMwsySWV447y99gUPghxq42BxqLNMndb+a1mm/5/7NeXVQS7RLa2XyXvYg==
 
+socket.io-client@^4.5.1:
+  version "4.5.3"
+  resolved "https://registry.npmjs.org/socket.io-client/-/socket.io-client-4.5.3.tgz"
+  integrity sha512-I/hqDYpQ6JKwtJOf5ikM+Qz+YujZPMEl6qBLhxiP0nX+TfXKhW4KZZG8lamrD6Y5ngjmYHreESVasVCgi5Kl3A==
+  dependencies:
+    "@socket.io/component-emitter" "~3.1.0"
+    debug "~4.3.2"
+    engine.io-client "~6.2.3"
+    socket.io-parser "~4.2.0"
+
 socket.io-parser@~4.2.0:
   version "4.2.1"
   resolved "https://registry.npmjs.org/socket.io-parser/-/socket.io-parser-4.2.1.tgz"
@@ -5641,7 +5698,7 @@ socket.io-parser@~4.2.0:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.3.1"
 
-socket.io@^4.4.1:
+socket.io@^4.4.1, socket.io@^4.5.1:
   version "4.5.3"
   resolved "https://registry.npmjs.org/socket.io/-/socket.io-4.5.3.tgz"
   integrity sha512-zdpnnKU+H6mOp7nYRXH4GNv1ux6HL6+lHL8g7Ds7Lj8CkdK1jJK/dlwsKDculbyOHifcJ0Pr/yeXnZQ5GeFrcg==
@@ -6064,7 +6121,7 @@ tree-kill@1.2.2:
   resolved "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
-tslib@2.4.0, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0:
+tslib@2.4.0, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1:
   version "2.4.0"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
@@ -6385,6 +6442,11 @@ ws@~8.2.3:
   version "8.2.3"
   resolved "https://registry.npmjs.org/ws/-/ws-8.2.3.tgz"
   integrity sha512-wBuoj1BDpC6ZQ1B7DWQBYVLphPWkm8i9Y0/3YdHjHKHiohOJ1ws+3OccDWtH+PoC9DZD5WOTrJvNbWvjS6JWaA==
+
+xmlhttprequest-ssl@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/xmlhttprequest-ssl/-/xmlhttprequest-ssl-2.0.0.tgz"
+  integrity sha512-QKxVRxiRACQcVuQEYFsI1hhkrMlrXHPegbbd1yn9UHOmRxY+si12nQYzri3vbzt8VdTTRviqcKxcyllFas5z2A==
 
 xtend@^4.0.2:
   version "4.0.2"

@@ -1,10 +1,16 @@
-
-const apiUrl = 'https://dev-connect-rest-api.herokuapp.com'
+export const apiUrl = 'https://dev-connect-rest-api.herokuapp.com';
 
 export const environment = {
-  production: true,
+  production: false,
 
   signin: `${apiUrl}/auth/signIn`,
   signup: `${apiUrl}/user/register`,
-  project: `${apiUrl}/project`
+  users: `${apiUrl}/user`,
+  project: `${apiUrl}/project`,
+  member: `${apiUrl}/project`,
+  deleteMember: `${apiUrl}/project-detail/member`,
+  status: `${apiUrl}/project`,
+  tag: `${apiUrl}/project`,
+  todo: `${apiUrl}/todo`,
+  chat: `${apiUrl}/chat`,
 };
